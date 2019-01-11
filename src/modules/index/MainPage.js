@@ -16,10 +16,10 @@ const Root=styled.div`
    }
    &>div:nth-child(1){
        width:0;
-       flex:5;
+       flex:6;
    }
    &>div:nth-child(2){
-        flex:3;
+        flex:2;
     }
 `
 

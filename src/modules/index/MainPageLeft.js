@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import {Carousel,Icon,} from 'antd'
+import {Carousel,Icon,Input,Button} from 'antd'
+import {labels,links,pictures} from '@type'
+import { Link } from 'react-router-dom';
 
 const Root=styled.div`
     display:flex;
@@ -9,34 +11,56 @@ const Root=styled.div`
     .hot-style{
         flex:2;
         margin-right:20px;
-        p{
-            height: 45px;
-            line-height:45px;
-            background-color: rgba(186, 186, 186, 1);
-            color: rgba(16, 16, 16, 1);
-            font-size: 25px;
-            text-align: center;
+        &>div{
+            margin-bottom:10px;
+        }
+        .search-style{
+            display:flex;
+            width:100%;
+            margin:10px 0;
+            button{
+                margin-left:10px;
+            }
+        }
+        .labels-style,
+        .links-style{
+            box-sizing:border-box;
+            padding:10px;
             border: 1px solid rgba(187, 187, 187, 1);
+            p{
+                font-size:16px;
+                font-weight:bold;
+                box-sizing:border-box;
+                border-bottom:1px solid rgba(187, 187, 187, .5);
+                span{
+                   display:inline-block;
+                   line-height:30px;
+                   border-bottom: 2px solid #1890ff; 
+                }
+            }
+            a:hover{
+                color:#007cec;
+            }
         }
-        ul{
-        padding:0 20px;
-        list-style:none;
-        display:flex;
-        justify-content:center;
-        flex-wrap:wrap;
-        line-height: 36px;
-        color: rgba(16, 16, 16, 1);
-        font-size:20px;
-        text-align: center;
-        li>span{
-            cursor:pointer;
+        .labels-cont-style{
+            display:flex;
+            flex-wrap:wrap;
+            align-items:flex-start;
+            a{  
+                color:#000;
+                padding:5px;
+                border:1px solid #d1a378;
+                margin:5px;
+                border-radius:30%;
+            }
         }
-        li>span:hover{
-            color:#1890ff;
+        .links-style>ul{
+            list-style-position:inside;
+            a{
+                color:#000;
+            }
         }
         
-
-        }
     }
     .cont-style{
         width:0;
@@ -49,8 +73,11 @@ const Root=styled.div`
             text-align: center;
             height:377px;
             line-height: 160px;
-            background:#1890ff;
             overflow: hidden;
+            .picture-cont-style{
+                width:100%;
+                height:100%;
+            }
         }
         
         .ant-carousel .slick-slide h1 {
@@ -106,7 +133,6 @@ const Root=styled.div`
 
 
 `
-const arrays=["销售","客服","市场","财务","人力资源","行政项目","质量","高级管理","房产","建筑","物业管理","IT","互联网","通信","采购","贸易","交通","物流","传媒","印刷","艺术设计","其他"];
 const arrays1=[
     {
         img:'/imgs/img2.jpg',
@@ -126,6 +152,12 @@ const arrays1=[
 
 
 export default class MainPageLeft extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+            value:'',//搜索内容
+        }
+    }
      //热门点击事件
      onClickFun=()=>{
         
@@ -135,26 +167,54 @@ export default class MainPageLeft extends React.Component{
         this.props.selectModuleFun('6')
         this.props.history.push('/detailShow');
     }
+    //搜索
+    onChangeValue=(e)=>{
+        this.setState({
+            value:e.target.value
+        })
+    }
+    onSearch=()=>{
+        this.props.selectModuleFun('5')
+        this.props.history.push(`/search/?val=${this.state.value}`);
+    }
     render(){
         return (
             <Root>
-                <div className='hot-style'>
-                        <p>热门</p>
-                        <ul>
-                            {
-                                arrays.map((i,index)=>(
-                                    <li key={i} onClick={this.onClickFun.bind(this)}><span>{i}</span>{`${(index+1)===arrays.length?"":"/"}`}</li>
-                                ))
-                            }
-                        </ul>
+                   <div className='hot-style'>
+                        <div className='search-style'>
+                            <Input onChange={this.onChangeValue.bind(this)}/><Button onClick={this.onSearch.bind(this)}>搜索</Button>
+                        </div>
+                        <div className='labels-style'>
+                            <p><span>标签集合</span></p>
+                            <div className='labels-cont-style'>
+                                 {
+                                     labels.map((l,i)=>(
+                                         <Link key={i} to={l.url}>{l.title}</Link>
+                                     ))
+                                 }
+                            </div>
+                        </div>
+                        <div className='links-style'>
+                            <p><span>链接推荐</span></p>
+                            <ul>
+                                {
+                                    links.map((l,i)=>(
+                                        <li key={i}><a href={l.url} target='_blank' rel="noopener noreferrer">{l.title}</a></li>
+                                    ))
+                                }
+                            </ul>
+                        </div>
                     </div>
                     <div className='cont-style'>
                         <div className='cont-carouse-style'>
                             <Carousel autoplay>
-                                <div><h1>1</h1></div>
-                                <div><h1>2</h1></div>
-                                <div><h1>3</h1></div>
-                                <div><h1>4</h1></div>
+                                {
+                                    pictures.map((item,index)=>(
+                                        <div key={index} className='picture-cont-style'>
+                                            <img key={index} src={item.url} alt={`图片-${index+1}`}/>
+                                        </div>
+                                    ))
+                                }
                             </Carousel> 
                         </div>
                         <ul className='cont-ul-style'>

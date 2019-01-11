@@ -4,62 +4,67 @@ import connect from '@connect'
 import './index.css'
 import FooterContent from './FooterContent'
 import { BrowserRouter as Router,Route,Link } from 'react-router-dom';
-import {Layout, Menu ,Button} from 'antd';
+import {Layout, Menu ,Icon} from 'antd';
 
 
 
-
+const SubMenu = Menu.SubMenu;
 const { Header, Content, Footer } = Layout;
 const Root=styled.div`
     width:100%;
     height:100%;
     .hearder-Style{
-        display:flex;
-        align-items:center;
-        justify-content:space-around;
-        height:119px;
-        padding:0 50px;
-        line-height:44px;
-        font-size:30px;
+        height:250px;
+        padding:0 10%;
+        font-size:18px;
         color:rgba(16,16,16,1);
         font-family:Roboto;
-        border-bottom: 1px solid rgba(187, 187, 187, 1);
-        button.ant-btn{
+        background-color:#AFCFE6;
+        background-image: url('./imgs/back1.jpg');
+        background-size:100% 200%;
+        background-position: 100% 80%;
+        background-repeat: no-repeat;
+        .menu-Style{
+            text-align:right;
             height:40px;
-            font-size:25px;
-            line-height:40px;
-        }
-    }
-    .logo-Style{
-        span{
-            display:inline-block;
-            width: 91px;
-            height: 96px;
-            line-height:96px;
-            border-radius: 4px;
-            text-align: center;
-            font-family: Roboto;
-            margin-right:20px;
-            border: 1px solid rgba(187, 187, 187, 1); 
-        }
-    }
-    .menu-Style{
-        margin:0;
-        height:100%;
-        border-bottom:none;
-        & .ant-menu-item{
-            height:100%;
-            color:rgba(16,16,16,1);
-            font-size:30px;
-            line-height:118px;
+            background:transparent;
+            border-bottom:none;
+            & .ant-menu-item,
+            & .ant-menu-submenu-title{
+                height:100%;
+                font-size:20px;
+                line-height:20px;
+                border:none;
+                color:rgba(16,16,16,1);
+                .anticon{
+                    font-size:18px;
+                    margin-right:5px;
+                }
+                .anticon:nth-child(2){
+                    font-size:12px;
+                    margin-left:5px;
+                }
+                .ant-menu-submenu-arrow{
+                    width:10px;
+                }
+            }
+            & .ant-menu-item{
+                line-height:60px;
+            }
+         }
+        & .ant-menu-horizontal > .ant-menu-item-selected,
+        & .ant-menu-horizontal > .ant-menu-item-active,
+        & .ant-menu-submenu-horizontal{
+             border:none;
         }
         
     }
+    
     .content-Style{
         width:100%;
         min-height:20vh;
         box-sizing:border-box;
-        padding:0 50px;
+        padding:0 15%;
         margin-bottom:100px;
     }
     
@@ -94,22 +99,23 @@ class MainContent extends React.Component{
                <Router>
                     <Layout>
                         <Header className='hearder-Style'>
-                            <div className='logo-Style'>
-                                <span>logo</span>
-                                职引官
-                            </div>
                             <Menu
                                     mode="horizontal"
                                     className='menu-Style'
                                     defaultSelectedKeys={this.state.key}
                                     onClick={this.onSelectFun.bind(this)}
                             >
-                                <Menu.Item key="0"><Link to='/'>首页</Link></Menu.Item>
-                                <Menu.Item key="1"><Link to='/y'>引享圈</Link></Menu.Item>
-                                <Menu.Item key="2"><Link to='/p'>职位行情</Link></Menu.Item>
-                                <Menu.Item key="3"><Link to='/text'>测一测</Link></Menu.Item>
+                                <Menu.Item key="0"><Link to='/'><Icon type="home" />首页</Link></Menu.Item>
+                                
+                                <SubMenu key="前端" title={<span><Icon type="code" />前端<Icon type="down" /></span>}>
+                                    <Menu.Item key="1"><Link to='/'>HTML</Link></Menu.Item>
+                                    <Menu.Item key="2"><Link to='/'>CSS</Link></Menu.Item>
+                                    <Menu.Item key="3"><Link to='/'>javaScript</Link></Menu.Item>
+                                </SubMenu>
+                                <Menu.Item key="4"><Link to='/article'><Icon type="book" />文章</Link></Menu.Item>
+                                <Menu.Item key="5"><Link to='/p'><Icon type="customer-service" />我爱Music</Link></Menu.Item>
+                                <Menu.Item key="6"><Link to='/text'><Icon type="picture" />独家记忆</Link></Menu.Item>
                             </Menu>
-                            <Button>发布提问/动态</Button>
                         </Header>
                         <Content className='content-Style'>
                             <Route exact path={selectedPath.url} component={selectedPath.comp}/>

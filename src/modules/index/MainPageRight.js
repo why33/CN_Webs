@@ -1,92 +1,73 @@
 import React from 'react'
 import styled from 'styled-components'
 import HotTabs from './HotTabs'
-import { Button,Input} from 'antd'
+import { Button} from 'antd'
 
 const Root=styled.div`
-    .search-style{
-        display:flex;
-        width:100%;
-        margin-bottom:10px;
-        button{
-            margin-left:10px;
-        }
-    }
+    
     .user-style{
         position:relative;
         width:100%;
         text-align:center;
         font-size:18px;
         border:1px solid rgba(187, 187, 187, 1);
-        button{
-            position:absolute;
-            right:5px;
-            top:5px;
-        }
+        padding-top:140px;
         img{
-            width:80px;
-            height:80px;
-            border-radius:50%;
-            margin-top:10px;
+            position:absolute;
+            top:-60px;
+            left:0;
+            right:0;
+            margin:auto;
+            width:150px;
+            height:180px;
             cursor:pointer;
+            border:5px solid #fff;
+            border-radius:5px 5px 0 0;
+        }
+        &>p{
+            color:#1890ff; 
+            font-size:22px;
+            font-family:Courier;
+            font-weight:bolder;
+            cursor:pointer;
+            margin-bottom:10px;
         }
         .user-detail-style{
-            margin-top:20px;
             p{
-                display:flex;
-                justify-content:space-around;
+                font-size:14px;
+                font-weight:bold;
             }
+            button{
+                margin-bottom:20px;
+                border:1px solid #d1a378;
+            }
+
         }  
     }
 
 `
 
 export default class MainPageRight extends React.Component{
-    constructor(props){
-        super(props);
-        this.state={
-            value:'',//搜索内容
-        }
-    }
+    
     //点击进入个人资料
     onClickUser=()=>{
         this.props.selectModuleFun('4')
         this.props.history.push('/user');
     }
 
-    //搜索
-    onChangeValue=(e)=>{
-        this.setState({
-            value:e.target.value
-        })
-    }
-    onSearch=()=>{
-        this.props.selectModuleFun('5')
-        this.props.history.push(`/search/?val=${this.state.value}`);
-    }
+    
     render(){
         return (
             <Root>
-                <div className='search-style'>
-                       <Input onChange={this.onChangeValue.bind(this)}/><Button onClick={this.onSearch.bind(this)}>搜索</Button>
-                 </div>
                 <div className='user-style'>
-                        <Button>退出</Button>  
-                        <img src='/imgs/img2.jpg'  alt='用户' onClick={this.onClickUser.bind(this)}/>
-                        <p>杰哥达人</p>
+                        <img src='/imgs/user.jpg'  alt='用户头像'  />
+                        <p>古罗马</p>
                         <div className='user-detail-style'>
-                            <p>
-                                <span>发布: 10</span>
-                                <span>粉丝: 100</span>
-                            </p>
-                            <p>
-                                <span>新消息: 10</span>
-                                <span>关注: 100</span>
-                                <span>收藏: 100</span>
-
-                            </p>
+                           <p>陪伴是最长情的告白.</p>
+                           <Button onClick={this.onClickUser.bind(this)}>关于古罗马</Button>
                         </div>
                 </div>
+               
                 <HotTabs {...this.props}/>    
             </Root>
         )

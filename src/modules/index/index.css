@@ -1,0 +1,7 @@
+
+.ant-menu-submenu-popup>ul>.ant-menu-item{
+    border-bottom:1px solid rgba(187, 187, 187, .6);
+    height:30px;
+    line-height: 30px;
+    margin:0;
+}
