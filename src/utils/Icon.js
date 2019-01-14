@@ -1,5 +1,11 @@
-export default{
-    I_LOCK: "lock",
-    I_USER: "user",
-    I_PHONE: "eye"
+export default  {
+    iHome:"home",
+    iUser: "user",
+    iPicture:"picture",
+    iMusic:"customer-service",
+    iBook:"book",
+    iArrowDown:"down",
+    iCode:"code",
+    iTime:"clock-circle",
+
 }

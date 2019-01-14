@@ -10,7 +10,7 @@ const Root=styled.div`
         width:100%;
         text-align:center;
         font-size:18px;
-        border:1px solid rgba(187, 187, 187, 1);
+        box-shadow:0px .5px 5px 0 rgba(187, 187, 187,.8);
         padding-top:140px;
         img{
             position:absolute;
@@ -51,8 +51,8 @@ export default class MainPageRight extends React.Component{
     
     //点击进入个人资料
     onClickUser=()=>{
-        this.props.selectModuleFun('4')
-        this.props.history.push('/user');
+        this.props.selectModuleFun('7')
+        this.props.history.push('/intro');
     }
 
     
@@ -67,7 +67,6 @@ export default class MainPageRight extends React.Component{
                            <Button onClick={this.onClickUser.bind(this)}>关于古罗马</Button>
                         </div>
                 </div>
-               
                 <HotTabs {...this.props}/>    
             </Root>
         )

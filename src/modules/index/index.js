@@ -5,8 +5,7 @@ import './index.css'
 import FooterContent from './FooterContent'
 import { BrowserRouter as Router,Route,Link } from 'react-router-dom';
 import {Layout, Menu ,Icon} from 'antd';
-
-
+import iconType from '@icon';
 
 const SubMenu = Menu.SubMenu;
 const { Header, Content, Footer } = Layout;
@@ -64,7 +63,7 @@ const Root=styled.div`
         width:100%;
         min-height:20vh;
         box-sizing:border-box;
-        padding:0 15%;
+        padding:10px 15%;
         margin-bottom:100px;
     }
     
@@ -105,16 +104,17 @@ class MainContent extends React.Component{
                                     defaultSelectedKeys={this.state.key}
                                     onClick={this.onSelectFun.bind(this)}
                             >
-                                <Menu.Item key="0"><Link to='/'><Icon type="home" />首页</Link></Menu.Item>
+                                <Menu.Item key="0"><Link to='/'><Icon type={iconType.iHome} />首页</Link></Menu.Item>
                                 
-                                <SubMenu key="前端" title={<span><Icon type="code" />前端<Icon type="down" /></span>}>
+                                 <SubMenu key="前端" title={<span><Icon type={iconType.iCode} />前端<Icon type={iconType.iArrowDown} /></span>}>
                                     <Menu.Item key="1"><Link to='/'>HTML</Link></Menu.Item>
                                     <Menu.Item key="2"><Link to='/'>CSS</Link></Menu.Item>
                                     <Menu.Item key="3"><Link to='/'>javaScript</Link></Menu.Item>
                                 </SubMenu>
-                                <Menu.Item key="4"><Link to='/article'><Icon type="book" />文章</Link></Menu.Item>
-                                <Menu.Item key="5"><Link to='/p'><Icon type="customer-service" />我爱Music</Link></Menu.Item>
-                                <Menu.Item key="6"><Link to='/text'><Icon type="picture" />独家记忆</Link></Menu.Item>
+                                <Menu.Item key="4"><Link to='/article'><Icon type={iconType.iBook} />文章</Link></Menu.Item>
+                                <Menu.Item key="5"><Link to='/p'><Icon type={iconType.iMusic} />我爱Music</Link></Menu.Item>
+                                <Menu.Item key="6"><Link to='/text'><Icon type={iconType.iPicture} />独家记忆</Link></Menu.Item>
+                                <Menu.Item key="7"><Link to='/intro'><Icon type={iconType.iUser} />关于古罗马</Link></Menu.Item> 
                             </Menu>
                         </Header>
                         <Content className='content-Style'>

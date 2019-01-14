@@ -10,7 +10,7 @@ const Root=styled.div`
    padding-left:10px;
    &>ul.presonal-style{
        list-style:none;
-       font-size:18px;
+       font-size:16px;
        line-height:50px;
        li>span{
            display:inline-block;
@@ -34,14 +34,12 @@ export default class PersonalData  extends React.Component{
         return (
             <Root>
                 <ul className='presonal-style'>
-                    <li><span>头像 :</span><img src='/imgs/img1.jpg' alt='头像'/></li>
-                    <li><span>昵称 :</span>杰哥超人</li>
-                    <li><span>性别 :</span><CheckboxGroup options={["男","女"]} value={["男"]} onChange={null}/></li>
+                    <li><span>姓名 :</span>陈宁</li>
+                    <li><span>性别 :</span><CheckboxGroup options={["男","女"]} value={["女"]} onChange={null}/></li>
                     <li><span>学历 :</span><CheckboxGroup options={["高中及以下","专科","本科","研究生/硕士","博士"]} value={["本科"]} onChange={null}/></li>
                     <li><span>学校 :</span>兰州理工大学</li>
                     <li><span>专业 :</span>计算机科学与技术</li>
-                    <li><span>所在地 :</span>浙江 - 宁波</li>
-
+                    <li><span>暂居地 :</span>浙江 - 宁波</li>
                 </ul>
             </Root>
         )

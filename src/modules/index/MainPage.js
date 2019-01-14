@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import connect from '@connect'
-import MainPageRight from './MainPageRight'
+import MainPageRight from '@comp/MainPageRight'
 import MainPageLeft from './MainPageLeft'
 import DetailsShow from './DetailsShow'
 
@@ -9,7 +9,6 @@ const Root=styled.div`
    display:flex;
    align-items:flex-start;
    justify-content:center;
-   font-family: Roboto;
    &>div{
        box-sizing:border-box;
        padding:20px 10px;

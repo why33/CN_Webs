@@ -48,6 +48,7 @@ const Root=styled.div`
 `
 export default class DetailShow extends React.Component{
     render(){
+        console.log(11111,this.props.contentDetail)
         return (
             <Root>
                 <div className='detail-show-style'>
@@ -59,13 +60,7 @@ export default class DetailShow extends React.Component{
                             <li><Icon type="smile" theme="twoTone" />1000</li>
                             <li><Icon type="star" theme="twoTone" />收藏</li>
                         </ul>
-                        <div className='detail-content-style'>
-                                首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO
-                                <div><img src='/imgs/img2.jpg' alt=''/></div>
-                                首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO
-                                <div><img src='/imgs/img2.jpg' alt=''/></div>
-                                首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO首席财务官CFO
-                                <div><img src='/imgs/img2.jpg' alt=''/></div>
+                        <div className='detail-content-style' dangerouslySetInnerHTML={{__html:this.props.contentDetail}}>
                         </div>
                     </div>
                 

@@ -160,7 +160,7 @@ module.exports = {
       '@connect':path.resolve(__dirname,'../src/redux/Connect.js'),
       '@module':path.resolve(__dirname,'../src/modules'),
       '@comp':path.resolve(__dirname,'../src/components'),
-      '@utils':path.resolve(__dirname, '../src/utils')
+      '@icon':path.resolve(__dirname, '../src/utils/Icon.js'),
     },
     plugins: [
       // Adds support for installing with Plug'n'Play, leading to faster installs and adding

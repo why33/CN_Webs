@@ -53,7 +53,7 @@ const paths=[
     },
     {
         key:'4',
-        url:'/user',
+        url:'/intro',
         comp:LoadableComUser
     },{
         key:'5',
@@ -63,11 +63,20 @@ const paths=[
         key:'6',
         url:'/detailShow',
         comp:LoadableComDetailShow
+    },{
+        
+        key:'7',
+        url:'/intro',
+        comp:LoadableComUser
+
     }
 ]
 const initialState={
     paths,
-    selectedPath:paths[0]
+    selectedPath:paths[0],
+    indexContentsList:[],
+    contentDetail:"",//资讯详情
+    
    
 }
 const getNewState=function(state=initialState,action){
@@ -77,6 +86,16 @@ const getNewState=function(state=initialState,action){
                 ...state,
                 selectedPath:Object.assign({},paths[action.data])
             }
+        case Type.INDEX_CONTENTS:
+            return {
+                ...state,
+                indexContentsList:action.data
+            }
+        case Type.INDEX_HTML_CONTENT:
+             return {
+                ...state,
+                contentDetail:action.data
+             }    
         default:
             return state   
     }

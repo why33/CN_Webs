@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+import iconType from '@icon';
 import {Carousel,Icon,Input,Button} from 'antd'
-import {labels,links,pictures} from '@type'
-import { Link } from 'react-router-dom';
+import {labels,links,pictures,contents} from '@type'
 
 const Root=styled.div`
     display:flex;
@@ -12,7 +12,7 @@ const Root=styled.div`
         flex:2;
         margin-right:20px;
         &>div{
-            margin-bottom:10px;
+            margin-bottom:15px;
         }
         .search-style{
             display:flex;
@@ -26,7 +26,7 @@ const Root=styled.div`
         .links-style{
             box-sizing:border-box;
             padding:10px;
-            border: 1px solid rgba(187, 187, 187, 1);
+            box-shadow:0px .5px 5px 0 rgba(187, 187, 187,.8);
             p{
                 font-size:16px;
                 font-weight:bold;
@@ -46,12 +46,17 @@ const Root=styled.div`
             display:flex;
             flex-wrap:wrap;
             align-items:flex-start;
-            a{  
+            span{  
                 color:#000;
                 padding:5px;
                 border:1px solid #d1a378;
                 margin:5px;
                 border-radius:30%;
+                cursor:pointer;
+            }
+            span:hover{
+                color:#1890ff; 
+                box-shadow:0px .5px 5px 0 rgba(187, 187, 187,.8);
             }
         }
         .links-style>ul{
@@ -71,61 +76,96 @@ const Root=styled.div`
         }
         .ant-carousel .slick-slide {
             text-align: center;
-            height:377px;
-            line-height: 160px;
+            height:370px;
             overflow: hidden;
-            .picture-cont-style{
+            &>div{
                 width:100%;
                 height:100%;
             }
-        }
-        
-        .ant-carousel .slick-slide h1 {
-            color: #fff;
-        }
-        .ant-carousel .slick-dots button{
-            width:10px;
-            height:10px;
-            border-radius:50%;
+            .picture-cont-style{
+                position:relative;
+                width:100%;
+                height:100%;
+                img{
+                    width:100%;
+                    height:100%;
+                }
+                p{
+                    position:absolute;
+                    bottom:0px;
+                    left:0;
+                    right:0;
+                    margin:auto;
+                    box-sizing:content-box;
+                    font-size:16px;
+                    height:35px;
+                    color:#fff;
+                    letter-spacing:2px;
+                    font-weight:bolder;
+                    text-align:center;
+                    padding:10px 10px;
+                    background:rgba(167,167,167,.75);
+                }
+            }
         }
         .cont-ul-style{
             list-style:none;
             margin-top:10px;
-            border: 1px solid rgba(187, 187, 187, 1);
-            border-bottom:none;
+            border: 1px solid rgba(187, 187, 187,1);
+            border-radius:10px;
+            padding:10px;
             box-sizing:border-box;
             li{
                 display:flex;
                 box-sizing:border-box;
+                padding:20px 10px;
                 border-bottom:1px solid rgba(187, 187, 187, 1);
                 img{
-                        width:200px;
-                        height:150px;
-                        margin:10px 20px 20px 10px;
-                    }
-                    .cont-detail-style{
-                        display:flex;
-                        flex-direction:column;
-                        justify-content:space-between;
-                        padding:0 20px;
-                        p{
-                            font-size:20px;
-                            font-weight:bolder;
-                            cursor:pointer;
-                            text-decoration:underline;
-                            margin-top:10px;
+                    width:50px;
+                    height:50px;
+                    border-radius:50%;
+                    margin:10px;
+                }
+                .cont-detail-style{
+                    grow-flex:1;
+                    box-sizing:border-box;
+                    &>p{
+                        font-size:18px;
+                        font-weight:bolder;
+                        margin-top:10px;
+                        margin-bottom:5px;
+                        border-bottom:1px solid #1890ff;
+                        span{
+                            display:inline-block;
+                            vertical-align:bottom;
+                            height:100%;
+                            color:#fff;
+                            font-size:16px;
+                            padding:0 10px;
+                            margin-right:10px;
+                            background:#1890ff;    
                         }
-                        &>div{
+                    }
+                    .cont-detail-cont-style{
+                        margin-bottom:30px;
+                        span{
+                            display:block;
                             color:rgba(187, 187, 187, 1);
-                            margin-bottom:20px;
-                            span:nth-child(1)>span{
-                                margin-left:10px;
-                            }
-                            span:nth-child(2){
-                                float:right;
-                            }
+                            margin-bottom:10px;
                         }
                     }
+                    &>span{
+                        color:#1890ff;  
+                        float:right;
+                        cursor:pointer;
+                    }
+                    &>span:hover{
+                        text-decoration:underline;
+                    }
+                }
+            }
+            li:last-child{
+                border-bottom:none;
             }
             
         }
@@ -133,22 +173,6 @@ const Root=styled.div`
 
 
 `
-const arrays1=[
-    {
-        img:'/imgs/img2.jpg',
-        text:'如果你无法简洁的表达你的想法，那只说明你还不够了解它。',
-        time:'2018-06-26',
-        author:'指引官',
-        numbers:12000
-    },
-    {
-        img:'/imgs/img2.jpg',
-        text:'如果你无法简洁的表达你的想法，那只说明你还不够了解它。',
-        time:'2018-06-26',
-        author:'指引官',
-        numbers:12000
-    }
-]
 
 
 export default class MainPageLeft extends React.Component{
@@ -158,14 +182,18 @@ export default class MainPageLeft extends React.Component{
             value:'',//搜索内容
         }
     }
+    componentDidMount(){
+        this.props.handleContentsFun(contents);
+    }
      //热门点击事件
      onClickFun=()=>{
         
     }
     //资讯详情
-    onClickInfor=()=>{
+    onClickInfor=(val,url)=>{
         this.props.selectModuleFun('6')
-        this.props.history.push('/detailShow');
+        this.props.history.push(`/detailShow?t=${val}`);
+        this.props.getHtmlContentFun(url);
     }
     //搜索
     onChangeValue=(e)=>{
@@ -173,23 +201,30 @@ export default class MainPageLeft extends React.Component{
             value:e.target.value
         })
     }
-    onSearch=()=>{
-        this.props.selectModuleFun('5')
-        this.props.history.push(`/search/?val=${this.state.value}`);
+    onSearch=(val,stu)=>{
+        if(stu){
+            this.props.selectModuleFun('5'); 
+            this.props.history.push(`/search/?val=${this.state.value}`);
+        }else{
+            this.props.selectModuleFun('5');
+            this.props.history.push(`/search/?val=${val}`);
+        }
+        
     }
     render(){
+        const { indexContentsList }=this.props;
         return (
             <Root>
                    <div className='hot-style'>
                         <div className='search-style'>
-                            <Input onChange={this.onChangeValue.bind(this)}/><Button onClick={this.onSearch.bind(this)}>搜索</Button>
+                            <Input onChange={this.onChangeValue.bind(this)}/><Button onClick={this.onSearch.bind(this,null,true)}>搜索</Button>
                         </div>
                         <div className='labels-style'>
                             <p><span>标签集合</span></p>
                             <div className='labels-cont-style'>
                                  {
                                      labels.map((l,i)=>(
-                                         <Link key={i} to={l.url}>{l.title}</Link>
+                                         <span key={i} onClick={this.onSearch.bind(this,l.title,false)}>{l.title}</span>
                                      ))
                                  }
                             </div>
@@ -207,11 +242,12 @@ export default class MainPageLeft extends React.Component{
                     </div>
                     <div className='cont-style'>
                         <div className='cont-carouse-style'>
-                            <Carousel autoplay>
+                            <Carousel fade="fade" autoplay>
                                 {
                                     pictures.map((item,index)=>(
                                         <div key={index} className='picture-cont-style'>
                                             <img key={index} src={item.url} alt={`图片-${index+1}`}/>
+                                            <p>{item.title}</p>
                                         </div>
                                     ))
                                 }
@@ -219,15 +255,18 @@ export default class MainPageLeft extends React.Component{
                         </div>
                         <ul className='cont-ul-style'>
                             {
-                                arrays1.map((item,index)=>(
+                                indexContentsList.map((item,index)=>(
                                     <li key={index} >
-                                        <img src={item.img} alt='pic'/>
+                                        <div>
+                                            <img src='./imgs/user.jpg' alt='用户'/>
+                                        </div>
                                         <div className='cont-detail-style'>
-                                            <p onClick={this.onClickInfor.bind(this)}>{item.text}</p>
-                                            <div>
-                                                <span>{item.time}<span>{item.author}</span></span>
-                                                <span><Icon type="frown" theme="twoTone" /> {item.numbers}</span>
+                                            <p><span>{item.par}</span>{item.title}</p>
+                                            <div className='cont-detail-cont-style'>
+                                                <span><Icon type={iconType.iTime} /> {item.time}</span>
+                                                {item.content}
                                             </div>
+                                            <span onClick={this.onClickInfor.bind(this,item.title,item.url)}>阅读全文</span>
                                             
                                         </div>
                                     </li>

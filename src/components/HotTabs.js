@@ -5,8 +5,8 @@ import {Tabs} from 'antd'
 const TabPane = Tabs.TabPane;
 const Root=styled.div`
     width:100%;
-    margin-top:10px;
-    border:1px solid rgba(187, 187, 187, 1);
+    margin-top:15px;
+    box-shadow:0px .5px 5px 0 rgba(187, 187, 187,.8);
     .hot-search-dot-style{
         position:relative;
         font-size:20px;

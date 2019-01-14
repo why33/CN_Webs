@@ -2,6 +2,8 @@ import React from 'react'
 import {Tabs} from 'antd'
 import styled from 'styled-components'
 import PersonalData from './PersonalData'
+import Contact from './Contact'
+import Collects from './Collects'
 
 const TabPane = Tabs.TabPane;
 const Root=styled.div`
@@ -9,28 +11,44 @@ const Root=styled.div`
    .user-part1-style{
        width:90%;
        display:flex;
-       justify-content:space-around;
-       align-items:flex-end;
+       
+       align-items:center;
        margin:20px auto 5px;
        font-size:20px;
-       border:1px solid rgba(178,178,178,1);
-       &>div{
-           margin:30px;
-           img{
-               width:200px;
-               height:150px;
-               margin-right:10px;
-           }
-       }
+       box-shadow:0px .5px 5px 0 rgba(187, 187, 187,.8);
+        img{
+            width:180px;
+            height:120px;
+            margin:0 5% 0 10%;
+        }
+        &>div{
+            p{
+                color:#1890ff; 
+                font-size:22px;
+                font-family:Courier;
+                font-weight:bolder;
+                line-height:30px;
+                margin-top:40px;
+            }
+        }
        ul{
            list-style:none;
            li{
-               float:left;
-               padding:20px 50px;
-               text-align:center;
-               span{
-                   display:block;
-               }
+              position:relative;
+              font-size:16px;
+              line-height:30px;
+              letter-spacing:2px;
+              padding-left:20px;
+           }
+           li::before{
+              position:absolute;
+              content:"";
+              top:12px;
+              left:0px;
+              width:8px;
+              height:8px;
+              border-radius:50%;
+              background:#71bbff;
            }
        }
    }
@@ -38,28 +56,28 @@ const Root=styled.div`
        width:90%;
        display:flex;
        align-items:flex-start;
-       margin:5px auto;
+       margin:15px auto;
        &>ul{
            list-style:none;
-           font-size:18px;
-           border:1px solid rgba(178,178,178,1);
+           font-size:16px;
+           box-shadow:0px .5px 5px 0 rgba(187, 187, 187,.8);
            border-bottom:none;
-           margin-right:5px;
+           margin-right:15px;
            li{
-               padding:10px;
+               padding:10px 20px;
                text-align:center;
                cursor:pointer;
                border-bottom:1px solid rgba(178,178,178,1);
            }
            li:hover,.activeStyle{
                color:#fff;
-               background:rgba(178,178,178,1);
+               background:#1890ff;
            }
        }
        &>div{
            width:0;
            flex-grow:1;
-           border:1px solid rgba(178,178,178,1);
+           box-shadow:0px .5px 5px 0 rgba(187, 187, 187,.8);
            .ant-tabs{
                width:90%;
                margin:5%;
@@ -71,12 +89,11 @@ const Root=styled.div`
    }
 
 `
-const titleArray=[{title:"我的资料",comp:()=><PersonalData/>},
-    {title:"我的粉丝",comp:PersonalData},
-    {title:"我的关注",comp:PersonalData},
-    {title:"我的发布",comp:PersonalData},
-    {title:"我的收藏",comp:PersonalData},
-    {title:"我的评论/消息",comp:PersonalData}];
+const titleArray=[
+    {title:"我的资料",comp:PersonalData},
+    {title:"联系方式",comp:Contact},
+    {title:"我的收藏",comp:Collects}
+]
 export default class UserInfo extends React.Component{
     constructor(props){
         super(props);
@@ -93,12 +110,16 @@ export default class UserInfo extends React.Component{
         return (
             <Root>
                <div className="user-part1-style">
-                    <div><img src='/imgs/img2.jpg' alt='头像'/>杰哥达人</div>
-                    <ul>
-                        <li><span>100</span>我的发布</li>
-                        <li><span>100</span>我的粉丝</li>
-                        <li><span>100</span>我的关注</li>
-                    </ul>
+                    <img src='/imgs/user.jpg' alt='头像'/>
+                    <div>
+                        <p>古罗马</p>
+                        <ul>
+                            <li>一个灰常喜欢前端的90后女生...</li>
+                            <li>一个爱折腾的90后女生...</li>
+                            <li>一个喜欢出去瞎晃晃的女生...</li>
+                        </ul>
+                    </div>
+                    
                </div>
                <div className="user-part2-style">
                     <ul>

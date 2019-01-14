@@ -49,7 +49,7 @@ const Root=styled.div`
     }
 
 `
-const arr=['资讯','动态','问答','职位','人'];
+const arr=['HTML','CSS','JavaScript','ES6'];
 export default class SearchPage extends React.Component{
     constructor(props){
         super(props);
@@ -67,7 +67,7 @@ export default class SearchPage extends React.Component{
         return (
             <Root>
                 <div className='search-style'>
-                    <Input addonBefore='职引官' />
+                    <Input />
                     <Button>搜索</Button>
                 </div>
                 <div className='search-content-style'>
