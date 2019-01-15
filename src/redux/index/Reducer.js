@@ -6,8 +6,8 @@ const LoadableComMain=Loadable({
     loader:()=>import('@module/index/MainPage'),
     loading:LoadingComponent
 })
-const LoadableComLeading=Loadable({
-    loader:()=>import('@module/leading'),
+const LoadableComWeb=Loadable({
+    loader:()=>import('@module/webs'),
     loading:LoadingComponent
 })
 const LoadableComJobMarket=Loadable({
@@ -38,17 +38,17 @@ const paths=[
     },
     {
         key:'1',
-        url:'/y',
-        comp:LoadableComLeading
+        url:'/web',
+        comp:LoadableComWeb
     },
     {
         key:'2',
-        url:'/p',
+        url:'/article',
         comp:LoadableComJobMarket
     },
     {
         key:'3',
-        url:'/text',
+        url:'/music',
         comp:LoadableComTestPages
     },
     {
@@ -56,26 +56,29 @@ const paths=[
         url:'/intro',
         comp:LoadableComUser
     },{
-        key:'5',
-        url:'/search',
-        comp:LoadableComSearch
-    },{
-        key:'6',
-        url:'/detailShow',
-        comp:LoadableComDetailShow
-    },{
         
-        key:'7',
+        key:'5',
         url:'/intro',
         comp:LoadableComUser
 
-    }
+    },{
+        key:'6',
+        url:'/search',
+        comp:LoadableComSearch
+    },{
+        key:'7',
+        url:'/detailShow',
+        comp:LoadableComDetailShow
+    },
 ]
 const initialState={
     paths,
+    keySelected:'0',//选中模块的索引
     selectedPath:paths[0],
     indexContentsList:[],
-    contentDetail:"",//资讯详情
+    contentDetailHTML:"",//资讯详情
+    contentSelected:null,//选中资讯
+
     
    
 }
@@ -84,7 +87,8 @@ const getNewState=function(state=initialState,action){
         case Type.INDEX_SELECT_MODULE:
             return {
                 ...state,
-                selectedPath:Object.assign({},paths[action.data])
+                keySelected:action.data2,
+                selectedPath:Object.assign({},paths[action.data1])
             }
         case Type.INDEX_CONTENTS:
             return {
@@ -94,7 +98,8 @@ const getNewState=function(state=initialState,action){
         case Type.INDEX_HTML_CONTENT:
              return {
                 ...state,
-                contentDetail:action.data
+                contentDetailHTML:action.data1,
+                contentSelected:action.data2
              }    
         default:
             return state   

@@ -111,7 +111,7 @@ const Root=styled.div`
         .cont-ul-style{
             list-style:none;
             margin-top:10px;
-            border: 1px solid rgba(187, 187, 187,1);
+            border: 1px solid rgba(187, 187, 187,.5);
             border-radius:10px;
             padding:10px;
             box-sizing:border-box;
@@ -136,14 +136,21 @@ const Root=styled.div`
                         margin-bottom:5px;
                         border-bottom:1px solid #1890ff;
                         span{
+                            cursor:pointer;
+                        }
+                        span:not(:last-child){
                             display:inline-block;
                             vertical-align:bottom;
                             height:100%;
                             color:#fff;
                             font-size:16px;
                             padding:0 10px;
+                            cursor:pointer;
                             margin-right:10px;
                             background:#1890ff;    
+                        }
+                        span:last-child:hover{
+                            color:#1890ff;
                         }
                     }
                     .cont-detail-cont-style{
@@ -190,10 +197,10 @@ export default class MainPageLeft extends React.Component{
         
     }
     //资讯详情
-    onClickInfor=(val,url)=>{
-        this.props.selectModuleFun('6')
-        this.props.history.push(`/detailShow?t=${val}`);
-        this.props.getHtmlContentFun(url);
+    onClickInfor=(item)=>{
+        this.props.selectModuleFun('7')
+        this.props.contentSelectedFun(item,()=> this.props.history.push(`/detailShow?t=${item.title}`));
+       
     }
     //搜索
     onChangeValue=(e)=>{
@@ -203,10 +210,10 @@ export default class MainPageLeft extends React.Component{
     }
     onSearch=(val,stu)=>{
         if(stu){
-            this.props.selectModuleFun('5'); 
+            this.props.selectModuleFun('6'); 
             this.props.history.push(`/search/?val=${this.state.value}`);
         }else{
-            this.props.selectModuleFun('5');
+            this.props.selectModuleFun('6');
             this.props.history.push(`/search/?val=${val}`);
         }
         
@@ -261,12 +268,12 @@ export default class MainPageLeft extends React.Component{
                                             <img src='./imgs/user.jpg' alt='用户'/>
                                         </div>
                                         <div className='cont-detail-style'>
-                                            <p><span>{item.par}</span>{item.title}</p>
+                                            <p><span>{item.par}</span><span onClick={this.onClickInfor.bind(this,item)}>{item.title}</span></p>
                                             <div className='cont-detail-cont-style'>
                                                 <span><Icon type={iconType.iTime} /> {item.time}</span>
                                                 {item.content}
                                             </div>
-                                            <span onClick={this.onClickInfor.bind(this,item.title,item.url)}>阅读全文</span>
+                                            <span onClick={this.onClickInfor.bind(this,item)}>阅读全文</span>
                                             
                                         </div>
                                     </li>

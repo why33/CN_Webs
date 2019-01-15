@@ -11,7 +11,6 @@ const Root=styled.div`
    .user-part1-style{
        width:90%;
        display:flex;
-       
        align-items:center;
        margin:20px auto 5px;
        font-size:20px;

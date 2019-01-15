@@ -51,7 +51,7 @@ export default class MainPageRight extends React.Component{
     
     //点击进入个人资料
     onClickUser=()=>{
-        this.props.selectModuleFun('7')
+        this.props.selectModuleFun('5')
         this.props.history.push('/intro');
     }
 

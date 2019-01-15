@@ -1,71 +1,126 @@
 import React from 'react'
 import {Icon } from 'antd'
+import iconType from '@icon'
 import styled from 'styled-components'
 
 const Root=styled.div`
-    width:100%;
+    width:100%;  
+    
+   
     .detail-show-style{
-        box-sizing:border-box;
-        padding:10px;
-        border: 1px solid rgba(187, 187, 187, 1);
+       width:100%; 
+       padding:20px;
+       box-sizing:border-box;
+       box-shadow:0px .5px 5px 0 rgba(187, 187, 187,.8);
+       &>button{
+           border:none;
+           outline:none;
+           background:none;
+           cursor:pointer;
+           padding:5px 10px;
+           border: 1px solid rgba(187, 187, 187, .6);
+       }
+       &>button:hover{
+            color:#1890ff; 
+            border-color:#1890ff;
+        }
     }
     .detail-title-style{
-        font-size:20px;
+        font-size:22px;
         font-weight:bold;
+        text-align:center;
+        margin-bottom:5px;
     }
     .detail-cont-style{
         font-size:18px;
         &>span{
-            font-weight:bold;
-            img{
-                width:80px;
-                height:80px;
-                border-radius:50%;
-                margin-right:10px;
-            }
-        }
-        
-        ul{
-            display:flex;
-            font-size:14px;
-            list-style:none;
-            margin-top:10px;
-            li{
-                flex:1;
-                text-align:center;
-            }
+            display:block;
+            text-align:center;
+            font-size:12px;
+            color:rgba(187, 187, 187, 1);
+            margin-bottom:1em;
         }
         .detail-content-style{
             padding:20px;
-            border: 1px solid rgba(187, 187, 187, 1);
-            img{
+            h1,h2,h3,h4,h5,h6{
+                padding:5px;
+                text-indent:10px;
+                background:rgba(187, 187, 187, .3);
+                border-left:5px solid #1890ff;
+
+            }
+            hr{
+                border:1px solid rgba(187, 187, 187, .3);
+                margin:20px;
+            }
+            p{
+                font-size:16px;
+                margin:20px;
+            }
+            ul{
+                list-style-position:inside;
+            }
+            code{
+                display:block;
                 width:100%;
-                height:150px;
+                padding:10px;
+                border:1px solid rgba(187, 187, 187, .2);
             }
         }
     }
-    
+     .detail-but-style{
+        margin-top:40px;
+        display:flex;
+        justify-content:space-between;
+        button{
+            border:none;
+            outline:none;
+            background:none;
+            cursor:pointer;
+            padding:5px 10px;
+            border: 1px solid rgba(187, 187, 187, .6);
+        }
+        button:hover{
+            color:#1890ff; 
+            border-color:#1890ff;
+        }
+     }
 `
 export default class DetailShow extends React.Component{
+    componentWillMount(){
+        if(!this.props.contentSelected){
+            this.props.selectModuleFun('0')
+            this.props.history.push(`/`);
+        }
+    }
+    //返回主页
+    returnIndex=()=>{
+        this.props.selectModuleFun('0')
+        this.props.history.push(`/`);
+    }
     render(){
-        console.log(11111,this.props.contentDetail)
+        const { contentSelected,contentDetailHTML }=this.props;
         return (
             <Root>
-                <div className='detail-show-style'>
-                    <p className='detail-title-style'>如果你无法简洁的表达你的想法，那只说明你还不够了解它。</p>
-                    <div className='detail-cont-style'>
-                        <span><img src='/imgs/img2.jpg' alt=""/>杰哥发</span>
-                        <ul>
-                            <li>2018-5-5</li>
-                            <li><Icon type="smile" theme="twoTone" />1000</li>
-                            <li><Icon type="star" theme="twoTone" />收藏</li>
-                        </ul>
-                        <div className='detail-content-style' dangerouslySetInnerHTML={{__html:this.props.contentDetail}}>
+               
+                {
+                    contentSelected && (
+                        <div className='detail-show-style'> 
+                            <button onClick={this.returnIndex.bind(this)}>返回主页</button>
+                            <p className='detail-title-style'>{contentSelected.title}</p>
+                            <div className='detail-cont-style'>
+                                <span><Icon type={iconType.iTime}/> {contentSelected.time}</span>
+                                <div className='detail-content-style' dangerouslySetInnerHTML={{__html:contentDetailHTML}}>
+                                </div>
+                            </div>
+                            <div className='detail-but-style'>
+                                <button><Icon type={iconType.iLeft}/> 上一篇</button>
+                                <button>下一篇 <Icon type={iconType.iRight}/></button>
+                            </div>
                         </div>
-                    </div>
-                
-                
-                </div>
+                    )
+                }
+               
             </Root>
         )
     }

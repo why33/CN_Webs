@@ -7,5 +7,7 @@ export default  {
     iArrowDown:"down",
     iCode:"code",
     iTime:"clock-circle",
+    iLeft:"left",
+    iRight:"right",
 
 }
