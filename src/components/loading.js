@@ -1,12 +1,15 @@
 import React from 'react';
 import { Spin,Empty } from 'antd';
-
-function LoadingComponent(error){
-    if(error){
+import './loading.css'
+function LoadingComponent(obj){
+    if(obj.error){
         return <Empty description='404'/>
     }else{
         return (
-            <Spin size="large" />
+            <div className='loadingStyle'>
+                <Spin size="large" />
+            </div>
+            
         )
     }
 }

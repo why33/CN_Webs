@@ -1,9 +1,11 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import index from './index/Action';
+import showContent from './showContent/Action';
 
 const actions={
     index,
+    showContent,
 }
 const reduceObjects = objArr => objArr.reduce((a, b) => ({
     ...a,

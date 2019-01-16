@@ -197,9 +197,9 @@ export default class MainPageLeft extends React.Component{
         
     }
     //资讯详情
-    onClickInfor=(item)=>{
+    onClickInfor=(item,index)=>{
         this.props.selectModuleFun('7')
-        this.props.contentSelectedFun(item,()=> this.props.history.push(`/detailShow?t=${item.title}`));
+        this.props.contentSelectedFun(item,index,"/",()=> this.props.history.push(`/detailShow?t=${item.title}`));
        
     }
     //搜索
@@ -219,7 +219,7 @@ export default class MainPageLeft extends React.Component{
         
     }
     render(){
-        const { indexContentsList }=this.props;
+        const { contentsList }=this.props;
         return (
             <Root>
                    <div className='hot-style'>
@@ -262,7 +262,7 @@ export default class MainPageLeft extends React.Component{
                         </div>
                         <ul className='cont-ul-style'>
                             {
-                                indexContentsList.map((item,index)=>(
+                                contentsList.map((item,index)=>(
                                     <li key={index} >
                                         <div>
                                             <img src='./imgs/user.jpg' alt='用户'/>
@@ -273,7 +273,7 @@ export default class MainPageLeft extends React.Component{
                                                 <span><Icon type={iconType.iTime} /> {item.time}</span>
                                                 {item.content}
                                             </div>
-                                            <span onClick={this.onClickInfor.bind(this,item)}>阅读全文</span>
+                                            <span onClick={this.onClickInfor.bind(this,item,index)}>阅读全文</span>
                                             
                                         </div>
                                     </li>

@@ -63,7 +63,7 @@ const Root=styled.div`
            border-bottom:none;
            margin-right:15px;
            li{
-               padding:10px 20px;
+               padding:10px 30px;
                text-align:center;
                cursor:pointer;
                border-bottom:1px solid rgba(178,178,178,1);

@@ -1,7 +1,54 @@
 
-.ant-menu-submenu-popup>ul>.ant-menu-item{
+:root div>.ant-menu-submenu-popup>ul.ant-menu-vertical>li.ant-menu-item{
     border-bottom:1px solid rgba(187, 187, 187, .6);
-    height:30px;
-    line-height: 30px;
-    margin:0;
+    height:40px;
+    font-weight: 500;
+    line-height: 40px;
+    margin:0px;
+}
+.hearder-Style{
+    height:250px;
+    padding:0 10%;
+    font-size:18px;
+    color:rgba(16,16,16,1);
+    background-image: url('/imgs/back1.jpg');
+    background-size:100% 200%;
+    background-position: 100% 80%;
+    background-repeat: no-repeat;
+}
+.index-tip-style{
+    position:fixed;
+    right:10px;
+    bottom:120px;
+}
+.index-tip-style>ul{
+    list-style:none;
+}
+.index-tip-style>ul>li{
+    color:#fff;
+    padding:5px 10px;
+    font-size:30px;
+    background:rgba(35, 40, 45,.6);
+    margin-top:5px;
+    cursor:pointer;
+    position:relative;
+}
+.index-tip-style>ul>li:hover{
+    background:#1890ff;
+}
+.index-tip-code-style:hover::before{
+    position:absolute;
+    top:0;
+    left:0;
+    content:"";
+    width:100px;
+    height:100px;
+    background:url('/imgs/userCode.jpg');
+    background-size:cover;
+    padding:10px;
+    transform:translate(-102%,-25%);
+    -webkit-transform:translate(-102%,-25%);
+    -moz-transform:translate(-102%,-25%);
+    -o-transform:translate(-102%,-25%);
+    -ms-transform:translate(-102%,-25%);
 }

@@ -5,6 +5,7 @@ import './index.css'
 import { BrowserRouter as Router,Route,Link } from 'react-router-dom';
 import {Layout, Menu ,Icon} from 'antd';
 import iconType from '@icon';
+import {contents} from '@type'
 import FooterContent from '@comp/FooterContent';
 
 const SubMenu = Menu.SubMenu;
@@ -13,16 +14,6 @@ const Root=styled.div`
     width:100%;
     height:100%;
     .hearder-Style{
-        height:250px;
-        padding:0 10%;
-        font-size:18px;
-        color:rgba(16,16,16,1);
-        font-family:Roboto;
-        background-color:#AFCFE6;
-        background-image: url('./imgs/back1.jpg');
-        background-size:100% 200%;
-        background-position: 100% 80%;
-        background-repeat: no-repeat;
         .menu-Style{
             text-align:right;
             height:40px;
@@ -32,9 +23,9 @@ const Root=styled.div`
             & .ant-menu-submenu-title{
                 height:100%;
                 font-size:20px;
+                font-weight:600;
                 line-height:20px;
                 border:none;
-                color:rgba(16,16,16,1);
                 .anticon{
                     font-size:18px;
                     margin-right:5px;
@@ -66,43 +57,7 @@ const Root=styled.div`
         padding:10px 15%;
         margin-bottom:100px;
     }
-    .index-tip-style{
-        position:fixed;
-        right:10px;
-        bottom:120px;
-        ul{
-            list-style:none;
-            li{
-                color:#fff;
-                padding:5px 10px;
-                font-size:30px;
-                background:rgba(35, 40, 45,.6);
-                margin-top:5px;
-                cursor:pointer;
-                position:relative;
-            }
-            li:hover{
-                background:#1890ff;
-            }
-            .index-tip-code-style:hover::before{
-                position:absolute;
-                top:0;
-                left:0;
-                content:"";
-                width:100px;
-                height:100px;
-                background:url('./imgs/userCode.jpg');
-                background-size:cover;
-                padding:10px;
-                transform:translate(-102%,-25%);
-                -webkit-transform:translate(-102%,-25%);
-                -moz-transform:translate(-102%,-25%);
-                -o-transform:translate(-102%,-25%);
-                -ms-transform:translate(-102%,-25%);
-            }
-            
-        }
-    }
+    
     
    
 `
@@ -117,14 +72,15 @@ class MainContent extends React.Component{
     }
     componentWillMount(){
         this.props.paths.forEach(r=>{
-            if(new RegExp(r.url).test(window.location.pathname)){
-                this.props.selectModuleFun(r.key);
-                this.setState({
-                    key:[r.key]
-                })
+            let path=window.location.pathname;
+            if(new RegExp(r.url).test(path)){
+                if(path.split('/').length===3){
+                    this.props.selectModuleFun(r.key+'-'+path.split('/')[2]);
+                }else{
+                    this.props.selectModuleFun(r.key);
+                }
             }
         })
-        window.history.forward(-1);
     }
     onSelectFun=(obj)=>{
         this.props.selectModuleFun(obj.key);
@@ -156,15 +112,17 @@ class MainContent extends React.Component{
                             <Menu
                                     mode="horizontal"
                                     className='menu-Style'
-                                    selectedKeys={[keySelected]}
+                                    selectedKeys={keySelected}
                                     onClick={this.onSelectFun.bind(this)}
                             >
                                 <Menu.Item key="0"><Link to='/'><Icon type={iconType.iHome} />首页</Link></Menu.Item>
                                 
-                                 <SubMenu key="前端" title={<span><Icon type={iconType.iCode} />前端<Icon type={iconType.iArrowDown} /></span>}>
-                                    <Menu.Item key="1-0"><Link to='/web'>HTML</Link></Menu.Item>
-                                    <Menu.Item key="1-1"><Link to='/web'>CSS</Link></Menu.Item>
-                                    <Menu.Item key="1-2"><Link to='/web'>JavaScript</Link></Menu.Item>
+                                 <SubMenu key="1" title={<span><Icon type={iconType.iCode} />前端<Icon type={iconType.iArrowDown} /></span>}>
+                                    {
+                                        contents.map((item,index)=>(
+                                            <Menu.Item key={`1-${index}`}><Link to={`/web/${index}`}>{item.title}</Link></Menu.Item>
+                                        ))
+                                    }
                                 </SubMenu>
                                 <Menu.Item key="2"><Link to='/article'><Icon type={iconType.iBook} />文章</Link></Menu.Item>
                                 <Menu.Item key="3"><Link to='/p'><Icon type={iconType.iMusic} />我爱Music</Link></Menu.Item>
@@ -173,7 +131,7 @@ class MainContent extends React.Component{
                             </Menu>
                         </Header>
                         <Content className='content-Style'>
-                            <Route exact path={selectedPath.url} component={selectedPath.comp}/>
+                            <Route path={selectedPath.url} component={selectedPath.comp}/>
                         </Content>
                         <Footer>
                             <FooterContent/>

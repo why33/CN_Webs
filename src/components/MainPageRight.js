@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import HotTabs from './HotTabs'
 import { Button} from 'antd'
+import connect from '@connect'
 
 const Root=styled.div`
     
@@ -20,7 +21,6 @@ const Root=styled.div`
             margin:auto;
             width:150px;
             height:180px;
-            cursor:pointer;
             border:5px solid #fff;
             border-radius:5px 5px 0 0;
         }
@@ -29,7 +29,6 @@ const Root=styled.div`
             font-size:22px;
             font-family:Courier;
             font-weight:bolder;
-            cursor:pointer;
             margin-bottom:10px;
         }
         .user-detail-style{
@@ -46,12 +45,12 @@ const Root=styled.div`
     }
 
 `
-
-export default class MainPageRight extends React.Component{
+@connect('index')
+class MainPageRight extends React.Component{
     
     //点击进入个人资料
     onClickUser=()=>{
-        this.props.selectModuleFun('5')
+        this.props.selectModuleFun('5');
         this.props.history.push('/intro');
     }
 
@@ -72,4 +71,5 @@ export default class MainPageRight extends React.Component{
         )
     }
 }
+export default MainPageRight;
 

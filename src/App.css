@@ -2,3 +2,20 @@
   width:100%;
   height:auto;
 }
+.content-layout-style{
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+}
+.content-layout-style>div{
+  box-sizing:border-box;
+  padding:20px 10px;
+}
+.content-layout-style>div:nth-child(1){
+  width:0;
+  flex:6;
+}
+.content-layout-style>div:nth-child(2){
+  flex:2;
+}
+

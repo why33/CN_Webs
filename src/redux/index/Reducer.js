@@ -10,8 +10,8 @@ const LoadableComWeb=Loadable({
     loader:()=>import('@module/webs'),
     loading:LoadingComponent
 })
-const LoadableComJobMarket=Loadable({
-    loader:()=>import('@module/jobMarket'),
+const LoadableComArticle=Loadable({
+    loader:()=>import('@module/article'),
     loading:LoadingComponent
 })
 const LoadableComTestPages=Loadable({
@@ -27,7 +27,7 @@ const LoadableComSearch=Loadable({
     loading:LoadingComponent
 })
 const LoadableComDetailShow=Loadable({
-    loader:()=>import('@module/index/MainPage'),
+    loader:()=>import('@comp/DetailsShow'),
     loading:LoadingComponent
 })
 const paths=[
@@ -44,7 +44,7 @@ const paths=[
     {
         key:'2',
         url:'/article',
-        comp:LoadableComJobMarket
+        comp:LoadableComArticle
     },
     {
         key:'3',
@@ -53,7 +53,7 @@ const paths=[
     },
     {
         key:'4',
-        url:'/intro',
+        url:'/intro2',
         comp:LoadableComUser
     },{
         
@@ -73,14 +73,8 @@ const paths=[
 ]
 const initialState={
     paths,
-    keySelected:'0',//选中模块的索引
+    keySelected:['0'],//选中模块的索引
     selectedPath:paths[0],
-    indexContentsList:[],
-    contentDetailHTML:"",//资讯详情
-    contentSelected:null,//选中资讯
-
-    
-   
 }
 const getNewState=function(state=initialState,action){
     switch (action.type){
@@ -90,17 +84,6 @@ const getNewState=function(state=initialState,action){
                 keySelected:action.data2,
                 selectedPath:Object.assign({},paths[action.data1])
             }
-        case Type.INDEX_CONTENTS:
-            return {
-                ...state,
-                indexContentsList:action.data
-            }
-        case Type.INDEX_HTML_CONTENT:
-             return {
-                ...state,
-                contentDetailHTML:action.data1,
-                contentSelected:action.data2
-             }    
         default:
             return state   
     }

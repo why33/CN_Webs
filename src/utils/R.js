@@ -22,11 +22,10 @@ export const pictures=[
    {'title':'纳木错--天湖',url:'https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2309665317,1499710035&fm=173&app=25&f=JPG?w=640&h=410&s=BB326084F60931473C87CD8903006099'},
    {'title':'林芝--西藏江南',url:'https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2730363537,1039270330&fm=173&app=25&f=JPEG?w=640&h=400&s=F32726E2061A366522238844030070FA'},
 ]
-//内容对应目录
+//web内容对应目录
 export const contents=[
     {
         title:'Javascript',
-        children:[]
     },
     {
         title:'CSS',
@@ -53,5 +52,9 @@ export const contents=[
         ]
     }
     
+]
+//文章模块目录
+export const articles=[
+    {title:"向往西藏",url:'/mds/articles/向往西藏.md',time:'2019-01-16',content:'有一种心情，叫做突然想去西藏'},
 ]
 
