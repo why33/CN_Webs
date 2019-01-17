@@ -1,10 +1,10 @@
 import React from 'react'
-import {Icon } from 'antd'
+import {Icon} from 'antd'
 import iconType from '@icon'
 import styled from 'styled-components'
 import connect from '@connect'
 import MainPageRight from '@comp/MainPageRight'
-
+import DrawerComp from './DrawerComp'
 
 const Root=styled.div`
     width:100%;  
@@ -22,24 +22,11 @@ const Root=styled.div`
     &>div:nth-child(2){
          flex:2;
      }
-   
     .detail-show-style{
        width:100%; 
        padding:20px;
        box-sizing:border-box;
        box-shadow:0px .5px 5px 0 rgba(187, 187, 187,.8);
-       &>button{
-           border:none;
-           outline:none;
-           background:none;
-           cursor:pointer;
-           padding:5px 10px;
-           border: 1px solid rgba(187, 187, 187, .6);
-       }
-       &>button:hover{
-            color:#1890ff; 
-            border-color:#1890ff;
-        }
     }
     .detail-title-style{
         font-size:22px;
@@ -61,7 +48,7 @@ const Root=styled.div`
             h1,h2,h3,h4,h5,h6{
                 padding:5px;
                 text-indent:10px;
-                background:rgba(187, 187, 187, .3);
+                background:rgba(187, 187, 187, .25);
                 border-left:5px solid #1890ff;
 
             }
@@ -82,10 +69,17 @@ const Root=styled.div`
                 padding:10px;
                 border:1px solid rgba(187, 187, 187, .2);
             }
+            pre{
+                font-size:14px;
+                margin-bottom:40px;
+                padding:5px;
+                border:1px solid rgba(209, 163, 120, .4);
+                
+            }
         }
     }
      .detail-but-style{
-        margin-top:40px;
+        margin-top:20px;
         display:flex;
         justify-content:space-between;
         button{
@@ -107,6 +101,12 @@ const Root=styled.div`
 `
 @connect('index','showContent') 
 class DetailShow extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+            visible:false,//运行代码时状态
+        }
+    }
     componentWillMount(){
         if(!this.props.contentSelected){
             this.props.selectModuleFun('0');
@@ -148,6 +148,18 @@ class DetailShow extends React.Component{
             window.document.scrollingElement.scrollTop=0;
         } );
     }
+    //运行代码
+    codeWoking=()=>{
+        this.setState({
+            visible:true
+        })
+    }
+    //关闭运行
+    onClose=()=>{
+        this.setState({
+           visible: false,
+        });
+    }
     render(){
         const { contentSelected,contentDetailHTML,contentsList }=this.props;
         let length=contentsList.length;
@@ -157,7 +169,10 @@ class DetailShow extends React.Component{
                     {
                         contentSelected && (
                             <div className='detail-show-style'> 
-                                <button onClick={this.returnIndex.bind(this)}>返回</button>
+                                <div className='detail-but-style'>
+                                    <button onClick={this.returnIndex.bind(this)}>返回</button>
+                                    {(contentSelected.type==='html')&& <button onClick={this.codeWoking.bind(this)}>运行代码</button>}
+                                </div>
                                 <p className='detail-title-style'>{contentSelected.title}</p>
                                 <div className='detail-cont-style'>
                                     <span><Icon type={iconType.iTime}/> {contentSelected.time}</span>
@@ -166,13 +181,25 @@ class DetailShow extends React.Component{
                                 </div>
                                 <div className='detail-but-style'>
                                     <button onClick={this.preContent.bind(this,contentSelected.index)} className={contentSelected.index===0?"disableStyle":""} disabled={contentSelected.index===0?true:false}><Icon type={iconType.iLeft}/> 上一篇</button>
-                                    <button onClick={this.nextContent.bind(this,contentSelected.index)} className={contentSelected.index===(length-1)?"disableStyle":""} disabled={contentSelected.index===2?true:false}>下一篇 <Icon type={iconType.iRight}/></button>
+                                    <button onClick={this.nextContent.bind(this,contentSelected.index)} className={contentSelected.index===(length-1)?"disableStyle":""} disabled={contentSelected.index===(length-1)?true:false}>下一篇 <Icon type={iconType.iRight}/></button>
                                 </div>
                             </div>
                         )
                     }
                 </div>
                 <MainPageRight {...this.props}/>
+                {
+                   contentSelected && contentSelected.type==='html' && (
+                        <DrawerComp
+                            title={contentSelected.title}
+                            visible={this.state.visible}
+                            onClose={this.onClose.bind(this)}
+                        >
+                            <iframe src={contentSelected.url} frameBorder="0" title='运行代码'></iframe>
+                        </DrawerComp> 
+                   ) 
+                }
+                
             </Root>
         )
     }

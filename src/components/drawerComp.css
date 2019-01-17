@@ -1,0 +1,76 @@
+div.DrawerComp-style{
+    
+}
+
+.DrawerCom-mask-style{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    padding:0;
+}
+.dShow{
+    background:rgba(0, 0, 0, 0.25);
+    z-index: 999;
+}
+.dHide{
+    background:none;
+    z-index: -1;
+}
+.DrawerCom-content-style{
+    position: fixed;
+    right:0;
+    width:45%;
+    height:auto;
+    background:#fff;
+    box-shadow:1px 1px 10px 0.5px rgba(0, 0, 0, 0.5);
+    transform: translateX(110%);
+    z-index:1000;
+}
+.drawerShow{
+    transform: translateX(0%);
+    animation: DrawerComAnShow .4s ease;
+}
+.drawerHide{
+    transform: translateX(110%);
+    animation: DrawerComAnHide .8s ease;
+}
+@keyframes DrawerComAnShow{
+	from {
+        transform: translateX(110%);
+    }
+	to {
+        transform: translateX(0%);
+    }
+}
+@keyframes DrawerComAnHide{
+	from {
+        transform: translateX(0%);
+    }
+	to {
+        transform: translateX(110%);
+    }
+}
+.DrawerCom-content-title-style{
+    height:40px;
+    color:#1890ff;
+    font-weight: bold;
+    font-size:18px;
+    line-height:40px;
+    padding:0 10px;
+    border-bottom:1px solid rgba(0, 0, 0, 0.3);
+}
+.DrawerCom-content-title-style>span{
+    float: right;
+    color:rgba(0, 0, 0, 0.45);
+    font-size:25px;
+    cursor: pointer;
+}
+.DrawerCom-content-title-style>span:hover{
+    color:#1890ff;
+}
+.DrawerCom-content-body-style{
+    padding:5px;
+    margin-bottom:40px;
+}

@@ -1,5 +1,5 @@
 import Type from "./Type";
-import LoadingComponent from '@comp/loading';
+import LoadingComponent from '@comp/Loading';
 import Loadable from 'react-loadable'
 
 const LoadableComMain=Loadable({

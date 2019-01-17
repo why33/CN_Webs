@@ -22,15 +22,25 @@ export const pictures=[
    {'title':'纳木错--天湖',url:'https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2309665317,1499710035&fm=173&app=25&f=JPG?w=640&h=410&s=BB326084F60931473C87CD8903006099'},
    {'title':'林芝--西藏江南',url:'https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2730363537,1039270330&fm=173&app=25&f=JPEG?w=640&h=400&s=F32726E2061A366522238844030070FA'},
 ]
-//web内容对应目录
+//web内容对应目录(如果没有children，就不要写children，否则修改程序)
 export const contents=[
     {
         title:'Javascript',
+        children:[
+            {title:'sort排序',type:'html',url:'/htmls/sort.html',time:'2018-1-17',content:'sort()方法使用...'}
+        ]
+    },
+    {
+        title:'HTML5',
+        children:[
+            {title:'Canvas自由粒子效果',type:'html',url:'/htmls/自由粒子.html',time:'2018-1-17',content:'根据HTML5的画布canvas实现自由粒子的效果...'}
+        ]
     },
     {
         title:'CSS',
         children:[
-            {title:'list-style',url:'/mds/css/listStyle.md',time:'2018-01-05',content:'由于它应用到所有 display 为 list-item 的元素，所以在普通的 HTML 和 XHTML 中只能用于 li 元素，不过实际上它可以应用到任何元素，并由 list-item 元素继承...'},
+            {title:'list-style',type:'md',url:'/mds/css/listStyle.md',time:'2018-01-05',content:'由于它应用到所有 display 为 list-item 的元素，所以在普通的 HTML 和 XHTML 中只能用于 li 元素，不过实际上它可以应用到任何元素，并由 list-item 元素继承...'},
+            {title:'css变量',type:'html',url:'/htmls/CSS变量.html',time:'2018-1-17',content:'也称CSS自定义属性，可以通过“--”来声明变量，用“var()”来读取变量，但是IE不支持...'}
         ]
     },
     {
@@ -41,14 +51,14 @@ export const contents=[
     },{
         title:'React',
         children:[
-            {title:'HTML字符串转为html',url:'/mds/react/stringTohtml.md',time:'2018-01-06',content:'react的做法是不直接读取你的html代码，以此来避免cross-site scripting (XSS)攻击，让你的代码更加安全...'},
-            {title:'CacheRoute中文说明',url:'/mds/react/CacheRoute_CN.md',time:'2018-01-07',content:'Route中配置的组件在路径不匹配时会被卸载（render 方法中 return null），对应的真实节点也将从 dom 树中删除在阅读了Route的源码后我们发现可以将children当作方法来使用，以帮助我们手动控制渲染的行为...'}
+            {title:'HTML字符串转为html',type:'md',url:'/mds/react/stringTohtml.md',time:'2018-01-06',content:'react的做法是不直接读取你的html代码，以此来避免cross-site scripting (XSS)攻击，让你的代码更加安全...'},
+            {title:'CacheRoute中文说明',type:'md',url:'/mds/react/CacheRoute_CN.md',time:'2018-01-07',content:'Route中配置的组件在路径不匹配时会被卸载（render 方法中 return null），对应的真实节点也将从 dom 树中删除在阅读了Route的源码后我们发现可以将children当作方法来使用，以帮助我们手动控制渲染的行为...'}
         ]
     },{
         title:'Others',
         children:[
-            {title:'web中展示Markdown文件',url:'/mds/others/markdown.md',time:'2018-02-06',content:'有别于GitHub官方给提供的API（有访问频率限制），使用了一个npm 模块。这个模块可以非常方便的将Markdown语法的字符串直接转化为HTML 代码字符串。然后让某个div元素的innerHTML属性为这个字符串即可显示...'},
-            {title:'跨站脚本攻击(XSS)',url:'/mds/others/XSS.md',time:'2018-04-05',content:'跨站脚本攻击Cross-site scripting (XSS)是一种安全漏洞，攻击者可以利用这种漏洞在网站上注入恶意的客户端代码...'}
+            {title:'web中展示Markdown文件',type:'md',url:'/mds/others/markdown.md',time:'2018-02-06',content:'有别于GitHub官方给提供的API（有访问频率限制），使用了一个npm 模块。这个模块可以非常方便的将Markdown语法的字符串直接转化为HTML 代码字符串。然后让某个div元素的innerHTML属性为这个字符串即可显示...'},
+            {title:'跨站脚本攻击(XSS)',type:'md',url:'/mds/others/XSS.md',time:'2018-04-05',content:'跨站脚本攻击Cross-site scripting (XSS)是一种安全漏洞，攻击者可以利用这种漏洞在网站上注入恶意的客户端代码...'}
         ]
     }
     

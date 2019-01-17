@@ -2,6 +2,7 @@
   width:100%;
   height:auto;
 }
+/* 页面主要内容布局 */
 .content-layout-style{
   display:flex;
   align-items:flex-start;
@@ -18,4 +19,26 @@
 .content-layout-style>div:nth-child(2){
   flex:2;
 }
-
+/* 代码运行弹框样式 */
+.ant-drawer-right.ant-drawer-open .ant-drawer-content-wrapper{
+    height:auto;
+   margin-top:50px;
+}
+.drawer-style .ant-drawer-content-wrapper>.ant-drawer-content{
+   height:auto;
+}
+.drawer-style .ant-drawer-content-wrapper>.ant-drawer-content .ant-drawer-header>.ant-drawer-title{
+  color:#1890ff;
+  font-weight: bold;
+  font-size:18px;
+}
+.drawer-style .ant-drawer-content-wrapper>.ant-drawer-content .ant-drawer-body{
+  padding:5px;
+}
+.ant-drawer-body{
+  height:250px;
+}
+.ant-drawer-body>iframe{
+  width:100%;
+  height: 100%;
+}

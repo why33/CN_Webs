@@ -127,7 +127,7 @@ const Root=styled.div`
                     margin:10px;
                 }
                 .cont-detail-style{
-                    grow-flex:1;
+                    flex-grow:1;
                     box-sizing:border-box;
                     &>p{
                         font-size:18px;
@@ -198,9 +198,12 @@ export default class MainPageLeft extends React.Component{
     }
     //资讯详情
     onClickInfor=(item,index)=>{
-        this.props.selectModuleFun('7')
-        this.props.contentSelectedFun(item,index,"/",()=> this.props.history.push(`/detailShow?t=${item.title}`));
-       
+        this.props.contentSelectedFun(item,index,"/",()=>this.success(item));
+    }
+    //请求成功
+    success=(item)=>{
+        this.props.selectModuleFun('7');
+        this.props.history.push(`/detailShow?t=${item.title}`);
     }
     //搜索
     onChangeValue=(e)=>{
@@ -219,7 +222,7 @@ export default class MainPageLeft extends React.Component{
         
     }
     render(){
-        const { contentsList }=this.props;
+        const { contentsList }=this.props;//主页资讯限制为3个
         return (
             <Root>
                    <div className='hot-style'>
@@ -273,7 +276,7 @@ export default class MainPageLeft extends React.Component{
                                                 <span><Icon type={iconType.iTime} /> {item.time}</span>
                                                 {item.content}
                                             </div>
-                                            <span onClick={this.onClickInfor.bind(this,item,index)}>阅读全文</span>
+                                            <span onClick={this.onClickInfor.bind(this,item,index)}>{`${(item.type==="md"?"阅读全文":"查看代码")}`}</span>
                                             
                                         </div>
                                     </li>

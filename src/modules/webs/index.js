@@ -2,7 +2,9 @@ import React from 'react'
 import MainPageRight from '@comp/MainPageRight'
 import styled from 'styled-components'
 import { contents} from '@type'
-import connect from '@connect';
+import connect from '@connect'
+import {Icon} from 'antd'
+import iconType from '@icon'
 
 const Root=styled.div`
     .content-style>ul{
@@ -60,14 +62,17 @@ const Root=styled.div`
 `
 @connect("index","showContent")
 class WebContent extends React.Component{
-    //查看全文
+    //查看全文/查看代码
     detailShow=(item,index)=>{
         let indexArr0=window.location.pathname.split('/');
         let index0=parseInt(indexArr0[indexArr0.length-1]);
         let lists0=contents[index0].children;
-        this.props.selectModuleFun('7');
-        this.props.ContentsListFun(lists0||[]);
-        this.props.contentSelectedFun(item,index,window.location.pathname,()=> this.props.history.push(`/detailShow?t=${item.title}`));
+        let success=()=>{
+             this.props.selectModuleFun('7');
+             this.props.ContentsListFun(lists0||[]);
+             this.props.history.push(`/detailShow?t=${item.title}`);
+        }
+        this.props.contentSelectedFun(item,index,window.location.pathname,()=>success());
     }
     render(){
         let indexArr=window.location.pathname.split('/');
@@ -82,12 +87,12 @@ class WebContent extends React.Component{
                                 {
                                     lists.map((item,index)=>(
                                         <li key={index}>
-                                            <p className='content-title-style' onClick={this.detailShow.bind(this,item,index)}> {item.title}</p>
+                                            <p className='content-title-style' onClick={this.detailShow.bind(this,item,index)}><Icon type={`${item.type==='md'?iconType.iFileText:iconType.iCode}`} theme="filled" /> {item.title}</p>
                                             <div>{item.content}</div>
                                             <div className='content-other-style'>
                                                 <img src='/imgs/user.jpg' alt="用户头像"/>
                                                 {item.time}
-                                                <button onClick={this.detailShow.bind(this,item,index)}>查看全文</button>
+                                                <button onClick={this.detailShow.bind(this,item,index)}>{`${(item.type==="md")?'阅读全文':'查看代码'}`}</button>
                                             </div>
                                         </li>
                                     ))

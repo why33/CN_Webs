@@ -9,5 +9,6 @@ export default  {
     iTime:"clock-circle",
     iLeft:"left",
     iRight:"right",
+    iFileText:"file-text",
 
 }
