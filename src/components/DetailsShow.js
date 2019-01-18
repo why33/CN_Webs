@@ -41,6 +41,7 @@ const Root=styled.div`
             text-align:center;
             font-size:12px;
             color:rgba(187, 187, 187, 1);
+            margin-top:1em;
             margin-bottom:1em;
         }
         .detail-content-style{
@@ -75,6 +76,9 @@ const Root=styled.div`
                 padding:5px;
                 border:1px solid rgba(209, 163, 120, .4);
                 
+            }
+            img{
+                width:100%;
             }
         }
     }
@@ -114,6 +118,12 @@ class DetailShow extends React.Component{
            
         }
     }
+    componentDidUpdate(){
+        let aElem=document.querySelectorAll('#content a')[0];
+        if(aElem){
+            aElem.target='_blank';
+        } 
+    }
     //返回
     returnIndex=()=>{
         let path=this.props.contentSelected.path;
@@ -150,9 +160,10 @@ class DetailShow extends React.Component{
     }
     //运行代码
     codeWoking=()=>{
-        this.setState({
-            visible:true
-        })
+        // this.setState({
+        //     visible:true
+        // })
+        window.open(this.props.contentSelected.url,"_blank")
     }
     //关闭运行
     onClose=()=>{
@@ -176,7 +187,7 @@ class DetailShow extends React.Component{
                                 <p className='detail-title-style'>{contentSelected.title}</p>
                                 <div className='detail-cont-style'>
                                     <span><Icon type={iconType.iTime}/> {contentSelected.time}</span>
-                                    <div className='detail-content-style' dangerouslySetInnerHTML={{__html:contentDetailHTML}}>
+                                    <div className='detail-content-style' id="content" dangerouslySetInnerHTML={{__html:contentDetailHTML}}>
                                     </div>
                                 </div>
                                 <div className='detail-but-style'>
@@ -195,7 +206,7 @@ class DetailShow extends React.Component{
                             visible={this.state.visible}
                             onClose={this.onClose.bind(this)}
                         >
-                            <iframe src={contentSelected.url} frameBorder="0" title='运行代码'></iframe>
+                            {/* <iframe src={contentSelected.url} frameBorder="0" title='运行代码'></iframe> */}
                         </DrawerComp> 
                    ) 
                 }

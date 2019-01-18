@@ -3,8 +3,6 @@ import MainPageRight from '@comp/MainPageRight'
 import styled from 'styled-components'
 import { contents} from '@type'
 import connect from '@connect'
-import {Icon} from 'antd'
-import iconType from '@icon'
 
 const Root=styled.div`
     .content-style>ul{
@@ -19,6 +17,27 @@ const Root=styled.div`
             font-size:18px;
             font-weight:bold;
             cursor:pointer;
+            line-height:30px;
+            span{
+                position:relative;
+                font-size:14px;
+                line-height:20px;
+                display:inline-block;
+                padding:0 5px;
+                color:#fff;
+                margin-right:20px;
+                background:#1890ff; 
+            }
+            span::after{
+                position:absolute;
+                content:'';
+                right:-20px;
+                width:0;
+                height:0;
+                border-width:10px;
+                border-style:solid;
+                border-color:transparent transparent transparent #1890ff;
+            }
         }
         .content-title-style:hover{
             color:#1890ff; 
@@ -33,6 +52,10 @@ const Root=styled.div`
                 border-radius:50%;
                 margin-right:10px;
             }
+            &>span{
+                display:inline-block;
+                vertical-align:middle;
+            }
             button{
                 float:right;
                 border:none;
@@ -41,7 +64,7 @@ const Root=styled.div`
                 cursor:pointer;
                 padding:5px 10px;
                 border: 1px solid rgba(187, 187, 187, .6);
-                margin-top:30px;
+                margin-top:20px;
             }
             button:hover{
                 color:#1890ff; 
@@ -77,6 +100,7 @@ class WebContent extends React.Component{
     render(){
         let indexArr=window.location.pathname.split('/');
         let index=parseInt(indexArr[indexArr.length-1]);
+        let parName=contents[index].title;
         let lists=contents[index].children;
         return (
             <Root className='content-layout-style'>
@@ -87,11 +111,18 @@ class WebContent extends React.Component{
                                 {
                                     lists.map((item,index)=>(
                                         <li key={index}>
-                                            <p className='content-title-style' onClick={this.detailShow.bind(this,item,index)}><Icon type={`${item.type==='md'?iconType.iFileText:iconType.iCode}`} theme="filled" /> {item.title}</p>
+                                            <p className='content-title-style' onClick={this.detailShow.bind(this,item,index)}>
+                                                <span>{parName}</span>
+                                                {item.title}
+                                            </p>
                                             <div>{item.content}</div>
                                             <div className='content-other-style'>
                                                 <img src='/imgs/user.jpg' alt="用户头像"/>
-                                                {item.time}
+                                                <span>
+                                                    <span>类型: {`${item.type==='md'?' 文章':' 代码'}`}</span><br/>
+                                                    {item.time}
+                                                </span>
+                                                
                                                 <button onClick={this.detailShow.bind(this,item,index)}>{`${(item.type==="md")?'阅读全文':'查看代码'}`}</button>
                                             </div>
                                         </li>

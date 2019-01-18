@@ -15,8 +15,8 @@ const getNewState=function(state=initialState,action){
         case Type.SHOW_HTML_CONTENT:
              return {
                 ...state,
-                contentDetailHTML:action.data1,
-                contentSelected:action.data2
+                contentDetailHTML:action.data[0],
+                contentSelected:action.data[1]
              }    
         default:
             return state   

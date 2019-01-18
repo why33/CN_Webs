@@ -92,9 +92,17 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
     //     sourceMap: shouldUseSourceMap,
     //   },
     // });
+    let loader = require.resolve(preProcessor);
     if (preProcessor === "less-loader") {
-      loader.options.modifyVars =theme;
-      loader.options.javascriptEnabled = true;
+      loader = {
+        loader,
+        options: {
+          modifyVars: theme,
+          javascriptEnabled: true,
+        }
+      }
+      // loader.options.modifyVars = theme;
+      // loader.options.javascriptEnabled = true;
     }
     loaders.push(loader);
   }

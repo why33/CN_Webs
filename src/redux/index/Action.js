@@ -9,8 +9,7 @@ const self={
         }
         dispatch({
             type:Type.INDEX_SELECT_MODULE,
-            data1:Number(keys[0]),
-            data2:keys
+            data:[Number(keys[0]),keys]
         })
     },
     

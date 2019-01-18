@@ -55,6 +55,7 @@ const Root=styled.div`
         min-height:20vh;
         box-sizing:border-box;
         padding:10px 15%;
+        margin-top:184px;
         margin-bottom:100px;
     }
     
@@ -108,30 +109,34 @@ class MainContent extends React.Component{
            <Root>
                <Router>
                     <Layout>
-                        <Header className='hearder-Style'>
-                            <Menu
-                                    mode="horizontal"
-                                    className='menu-Style'
-                                    selectedKeys={keySelected}
-                                    onClick={this.onSelectFun.bind(this)}
-                            >
-                                <Menu.Item key="0"><Link to='/'><Icon type={iconType.iHome} />首页</Link></Menu.Item>
-                                
-                                 <SubMenu key="1" title={<span><Icon type={iconType.iCode} />前端<Icon type={iconType.iArrowDown} /></span>}>
-                                    {
-                                        contents.map((item,index)=>(
-                                            <Menu.Item key={`1-${index}`}><Link to={`/web/${index}`}>{item.title}</Link></Menu.Item>
-                                        ))
-                                    }
-                                </SubMenu>
-                                <Menu.Item key="2"><Link to='/article'><Icon type={iconType.iBook} />文章</Link></Menu.Item>
-                                <Menu.Item key="3"><Link to='/p'><Icon type={iconType.iMusic} />我爱Music</Link></Menu.Item>
-                                <Menu.Item key="4"><Link to='/text'><Icon type={iconType.iPicture} />独家记忆</Link></Menu.Item>
-                                <Menu.Item key="5"><Link to='/intro'><Icon type={iconType.iUser} />关于古罗马</Link></Menu.Item> 
-                            </Menu>
+                        <Header>
+                            <div className='hearder-Style'>
+                                <Menu
+                                        mode="horizontal"
+                                        className='menu-Style'
+                                        selectedKeys={keySelected}
+                                        onClick={this.onSelectFun.bind(this)}
+                                >
+                                    <Menu.Item key="0"><Link to='/'><Icon type={iconType.iHome} />首页</Link></Menu.Item>
+                                    
+                                    <SubMenu key="1" title={<span><Icon type={iconType.iCode} />前端<Icon type={iconType.iArrowDown} /></span>}>
+                                        {
+                                            contents.map((item,index)=>(
+                                                <Menu.Item key={`1-${index}`}><Link to={`/web/${index}`}>{item.title}</Link></Menu.Item>
+                                            ))
+                                        }
+                                    </SubMenu>
+                                    <Menu.Item key="2"><Link to='/article'><Icon type={iconType.iBook} />文章</Link></Menu.Item>
+                                    <Menu.Item key="3"><Link to='/music'><Icon type={iconType.iMusic} />我爱Music</Link></Menu.Item>
+                                    <Menu.Item key="4"><Link to='/text'><Icon type={iconType.iPicture} />独家记忆</Link></Menu.Item>
+                                    <Menu.Item key="5"><Link to='/intro'><Icon type={iconType.iUser} />关于古罗马</Link></Menu.Item> 
+                                </Menu>
+                            </div>
                         </Header>
-                        <Content className='content-Style'>
-                            <Route path={selectedPath.url} component={selectedPath.comp}/>
+                        <Content>
+                            <div className='content-Style'>
+                                <Route path={selectedPath.url} component={selectedPath.comp}/>
+                            </div>
                         </Content>
                         <Footer>
                             <FooterContent/>

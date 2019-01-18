@@ -14,8 +14,8 @@ const LoadableComArticle=Loadable({
     loader:()=>import('@module/article'),
     loading:LoadingComponent
 })
-const LoadableComTestPages=Loadable({
-    loader:()=>import('@module/testPages'),
+const LoadableComMusic=Loadable({
+    loader:()=>import('@module/music'),
     loading:LoadingComponent
 })
 const LoadableComUser=Loadable({
@@ -49,7 +49,7 @@ const paths=[
     {
         key:'3',
         url:'/music',
-        comp:LoadableComTestPages
+        comp:LoadableComMusic
     },
     {
         key:'4',
@@ -81,8 +81,8 @@ const getNewState=function(state=initialState,action){
         case Type.INDEX_SELECT_MODULE:
             return {
                 ...state,
-                keySelected:action.data2,
-                selectedPath:Object.assign({},paths[action.data1])
+                keySelected:action.data[1],
+                selectedPath:Object.assign({},paths[action.data[0]])
             }
         default:
             return state   

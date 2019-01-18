@@ -10,5 +10,6 @@ export default  {
     iLeft:"left",
     iRight:"right",
     iFileText:"file-text",
+    iRightCircle:"right-circle",
 
 }

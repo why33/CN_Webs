@@ -56,8 +56,7 @@ export default {
                 }
                 dispatch({
                     type:Type.SHOW_HTML_CONTENT,
-                    data1:html,
-                    data2:Object.assign({},item,{index,path},)
+                    data:[html,Object.assign({},item,{index,path},)]
                 })
                 success();
             })

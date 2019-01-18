@@ -26,31 +26,33 @@ div.DrawerComp-style{
     background:#fff;
     box-shadow:1px 1px 10px 0.5px rgba(0, 0, 0, 0.5);
     transform: translateX(110%);
+    -webkit-transform: translateX(110%);
+    -moz-transform: translateX(110%);
+    -ms-transform: translateX(110%);
+    -o-transform: translateX(110%);
     z-index:1000;
 }
 .drawerShow{
     transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
     animation: DrawerComAnShow .4s ease;
+    -moz-animation: DrawerComAnShow .4s ease;
+    -webkit-animation: DrawerComAnShow .4s ease;
+    -o-animation: DrawerComAnShow .4s ease;
 }
 .drawerHide{
     transform: translateX(110%);
+    -webkit-transform: translateX(110%);
+    -moz-transform: translateX(110%);
+    -ms-transform: translateX(110%);
+    -o-transform: translateX(110%);
     animation: DrawerComAnHide .8s ease;
-}
-@keyframes DrawerComAnShow{
-	from {
-        transform: translateX(110%);
-    }
-	to {
-        transform: translateX(0%);
-    }
-}
-@keyframes DrawerComAnHide{
-	from {
-        transform: translateX(0%);
-    }
-	to {
-        transform: translateX(110%);
-    }
+    -webkit-animation:  DrawerComAnHide .8s ease;
+    -moz-animation: DrawerComAnHide .8s ease;
+    -o-animation: DrawerComAnHide .8s ease;
 }
 .DrawerCom-content-title-style{
     height:40px;
@@ -73,4 +75,136 @@ div.DrawerComp-style{
 .DrawerCom-content-body-style{
     padding:5px;
     margin-bottom:40px;
+}
+.DrawerCom-content-body-style>iframe{
+    width:100%;
+    height: 100%;
+}
+@keyframes DrawerComAnShow{
+	from {
+        transform: translateX(110%);
+        -webkit-transform: translateX(110%);
+        -moz-transform: translateX(110%);
+        -ms-transform: translateX(110%);
+        -o-transform: translateX(110%);
+    }
+	to {
+        transform: translateX(0%);
+        -webkit-transform: translateX(0%);
+        -moz-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+        -o-transform: translateX(0%);
+    }
+}
+@-moz-keyframes DrawerComAnShow{
+	from {
+        transform: translateX(110%);
+        -webkit-transform: translateX(110%);
+        -moz-transform: translateX(110%);
+        -ms-transform: translateX(110%);
+        -o-transform: translateX(110%);
+    }
+	to {
+        transform: translateX(0%);
+        -webkit-transform: translateX(0%);
+        -moz-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+        -o-transform: translateX(0%);
+    }
+}
+@-webkit-keyframes DrawerComAnShow{
+	from {
+        transform: translateX(110%);
+        -webkit-transform: translateX(110%);
+        -moz-transform: translateX(110%);
+        -ms-transform: translateX(110%);
+        -o-transform: translateX(110%);
+    }
+	to {
+        transform: translateX(0%);
+        -webkit-transform: translateX(0%);
+        -moz-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+        -o-transform: translateX(0%);
+    }
+}
+@-o-keyframes DrawerComAnShow{
+	from {
+        transform: translateX(110%);
+        -webkit-transform: translateX(110%);
+        -moz-transform: translateX(110%);
+        -ms-transform: translateX(110%);
+        -o-transform: translateX(110%);
+    }
+	to {
+        transform: translateX(0%);
+        -webkit-transform: translateX(0%);
+        -moz-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+        -o-transform: translateX(0%);
+    }
+}
+@keyframes DrawerComAnHide{
+	from {
+        transform: translateX(0%);
+        -webkit-transform: translateX(0%);
+        -moz-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+        -o-transform: translateX(0%);
+    }
+	to {
+        transform: translateX(110%);
+        -webkit-transform: translateX(110%);
+        -moz-transform: translateX(110%);
+        -ms-transform: translateX(110%);
+        -o-transform: translateX(110%);
+    }
+}
+@-webkit-keyframes DrawerComAnHide{
+	from {
+        transform: translateX(0%);
+        -webkit-transform: translateX(0%);
+        -moz-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+        -o-transform: translateX(0%);
+    }
+	to {
+        transform: translateX(110%);
+        -webkit-transform: translateX(110%);
+        -moz-transform: translateX(110%);
+        -ms-transform: translateX(110%);
+        -o-transform: translateX(110%);
+    }
+}
+@-moz-keyframes DrawerComAnHide{
+	from {
+        transform: translateX(0%);
+        -webkit-transform: translateX(0%);
+        -moz-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+        -o-transform: translateX(0%);
+    }
+	to {
+        transform: translateX(110%);
+        -webkit-transform: translateX(110%);
+        -moz-transform: translateX(110%);
+        -ms-transform: translateX(110%);
+        -o-transform: translateX(110%);
+    }
+}
+@-o-keyframes DrawerComAnHide{
+	from {
+        transform: translateX(0%);
+        -webkit-transform: translateX(0%);
+        -moz-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+        -o-transform: translateX(0%);
+    }
+	to {
+        transform: translateX(110%);
+        -webkit-transform: translateX(110%);
+        -moz-transform: translateX(110%);
+        -ms-transform: translateX(110%);
+        -o-transform: translateX(110%);
+    }
 }

@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import iconType from '@icon';
 import {Carousel,Icon,Input,Button} from 'antd'
-import {labels,links,pictures,contents} from '@type'
+import {links,pictures,contents} from '@type'
+import { Link } from 'react-router-dom';
 
 const Root=styled.div`
     display:flex;
@@ -155,10 +156,13 @@ const Root=styled.div`
                     }
                     .cont-detail-cont-style{
                         margin-bottom:30px;
-                        span{
+                        &>span{
                             display:block;
                             color:rgba(187, 187, 187, 1);
                             margin-bottom:10px;
+                            span{
+                                margin-left:20px;
+                            }
                         }
                     }
                     &>span{
@@ -193,7 +197,7 @@ export default class MainPageLeft extends React.Component{
         this.props.handleContentsFun(contents);
     }
      //热门点击事件
-     onClickFun=()=>{
+    onClickFun=()=>{
         
     }
     //资讯详情
@@ -221,6 +225,10 @@ export default class MainPageLeft extends React.Component{
         }
         
     }
+    //首页标签选中
+    selectModule=(key)=>{
+        this.props.selectModuleFun(key);
+    }
     render(){
         const { contentsList }=this.props;//主页资讯限制为3个
         return (
@@ -233,9 +241,9 @@ export default class MainPageLeft extends React.Component{
                             <p><span>标签集合</span></p>
                             <div className='labels-cont-style'>
                                  {
-                                     labels.map((l,i)=>(
-                                         <span key={i} onClick={this.onSearch.bind(this,l.title,false)}>{l.title}</span>
-                                     ))
+                                    contents.map((item,index)=>(
+                                        <span key={`1-${index}`}><Link to={`/web/${index}`} onClick={this.selectModule.bind(this,`1-${index}`)}>{item.title}</Link></span>
+                                    ))
                                  }
                             </div>
                         </div>
@@ -273,8 +281,9 @@ export default class MainPageLeft extends React.Component{
                                         <div className='cont-detail-style'>
                                             <p><span>{item.par}</span><span onClick={this.onClickInfor.bind(this,item)}>{item.title}</span></p>
                                             <div className='cont-detail-cont-style'>
-                                                <span><Icon type={iconType.iTime} /> {item.time}</span>
+                                                <span><Icon type={iconType.iTime} /> {item.time}<span>类型: {`${item.type==="md"?"文章":"代码"}`}</span></span>
                                                 {item.content}
+                                                
                                             </div>
                                             <span onClick={this.onClickInfor.bind(this,item,index)}>{`${(item.type==="md"?"阅读全文":"查看代码")}`}</span>
                                             
