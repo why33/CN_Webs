@@ -11,5 +11,6 @@ export default  {
     iRight:"right",
     iFileText:"file-text",
     iRightCircle:"right-circle",
+    iBars:"bars",
 
 }

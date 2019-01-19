@@ -83,16 +83,16 @@ module.exports = function(proxy, allowedHost) {
     },
     public: allowedHost,
     proxy:{
-      "/music/api*":{
-        target:"http://wwwapi.kugou.com/yy/index.php",
-        changeOrigin: true,
-        secure: true
-     },
-     "/api/*":{
-        target:"http://fs.w.kugou.com/",
-        changeOrigin:true,
-        secure:true
-     },
+    //   "/music/api*":{
+    //     target:"http://wwwapi.kugou.com/yy/index.php",
+    //     changeOrigin: true,
+    //     secure: true
+    //  },
+    //  "/api/*":{
+    //     target:"http://fs.w.kugou.com/",
+    //     changeOrigin:true,
+    //     secure:true
+    //  },
      
     },
     before(app, server) {

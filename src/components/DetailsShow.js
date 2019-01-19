@@ -160,10 +160,9 @@ class DetailShow extends React.Component{
     }
     //运行代码
     codeWoking=()=>{
-        // this.setState({
-        //     visible:true
-        // })
-        window.open(this.props.contentSelected.url,"_blank")
+        this.setState({
+            visible:true
+        })
     }
     //关闭运行
     onClose=()=>{
@@ -206,7 +205,7 @@ class DetailShow extends React.Component{
                             visible={this.state.visible}
                             onClose={this.onClose.bind(this)}
                         >
-                            {/* <iframe src={contentSelected.url} frameBorder="0" title='运行代码'></iframe> */}
+                            <iframe src={contentSelected.url} frameBorder="0" title='运行代码'></iframe>
                         </DrawerComp> 
                    ) 
                 }
