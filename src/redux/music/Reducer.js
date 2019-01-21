@@ -2,7 +2,7 @@ import Type from './Type';
 
 const initialState={
     musicAll:[],
-    // selectedMusic:{},
+    selectedMusic:null,
     // time:0,//播放时间
     // lyricTimeCha:[],//歌词时间差
     // isPlay:false,//是否播放,
@@ -15,13 +15,13 @@ const getNewState=function(state=initialState,action){
                 ...state,
                 musicAll:[...state.musicAll,action.data]
             }
-        // case Type.SELECT_MUSIC:
-        //     return {
-        //         ...state,
-        //         selectedMusic:action.data,
-        //         time:0,
-        //         lyricTimeCha:[]
-        //     }
+        case Type.SELECT_MUSIC:
+            return {
+                ...state,
+                selectedMusic:action.data,
+                // time:0,
+                // lyricTimeCha:[]
+            }
         // case Type.GET_TIME:
         //     return {
         //         ...state,

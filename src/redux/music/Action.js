@@ -3,7 +3,7 @@ import {MusicJson} from '@type'
 import jQuery from 'jquery'
 const self={
     loadMusicFun:(fail=()=>{})=>dispatch=>{
-        MusicJson.forEach(item=>{
+        MusicJson.forEach((item,index)=>{
             let url=item.split("?");
             let parm=url[1].split("&");
             let obj={}
@@ -29,12 +29,12 @@ const self={
             })
         })
     },
-    // selectMusicFun:(index)=>async (dispatch,getState)=>{
-    //     dispatch({
-    //         type:Type.SELECT_MUSIC,
-    //         data:getState().music.musicAll[index]
-    //     })
-    // },
+    selectMusicFun:(item)=>async (dispatch,getState)=>{
+        dispatch({
+            type:Type.SELECT_MUSIC,
+            data:item,
+        })
+    },
     // getTimeFun:obj=>dispatch=>{
     //     if(obj){
     //         dispatch({

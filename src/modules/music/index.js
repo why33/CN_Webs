@@ -16,7 +16,7 @@ const Root=styled.div`
         border:1px solid #1890ff;
     }
     .music-list-style{
-        width:35%;
+        width:20%;
         border-right:1px solid #1890ff;
         .music-list-hearder{
             font-size:16px;
@@ -32,6 +32,7 @@ const Root=styled.div`
             li{
                 font-size:14px;
                 line-height:30px;
+                text-indent:30px;
             }
             li:not(:last-child){
                 border-bottom:1px solid rgba(187, 187, 187,.8);
@@ -43,7 +44,44 @@ const Root=styled.div`
         }
     }
     .music-content-style{
-        width:65%;
+        width:80%;
+        display:flex;
+        box-sizing:border-box;
+        padding:15px;
+    }
+    .music-detail-style{
+        width:0;
+        flex:3;
+        border-right:1px solid rgba(187, 187, 187,.8);
+        &>div{
+            width:100%;
+            text-align:center;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            &>*{
+                width:60%;
+                display:block;
+            }
+            button{
+                margin-top:30px;
+                border:none;
+                outline:none;
+                background:none;
+                border:1px solid  rgba(187, 187, 187,.6);
+                line-height:25px;
+                border-radius:10px;
+                cursor:pointer;
+
+            }
+            button:hover{
+                border:1px solid #1890ff;
+            }
+        }
+    }
+    .music-lyric-style{
+        width:0;
+        flex:5;
     }
     .music-control-style{
         width:100%;
@@ -53,11 +91,19 @@ const Root=styled.div`
 `
 @connect("music")
 class MusicPages extends React.Component{
-    componentDidMount(){
+    componentWillMount(){
         this.props.loadMusicFun(()=>Message.error('请求失败,可能服务器出现问题'));
     }
+    componentWillReceiveProps(nextProps){
+        if(nextProps.musicAll!==this.props.musicAll){
+            this.props.selectMusicFun(nextProps.musicAll[0]);
+        }
+    }
+    clickfun=(item)=>{
+        this.props.selectMusicFun(item);
+    }
     render(){
-        const {musicAll}=this.props;
+        const {musicAll,selectedMusic}=this.props;
         return (
             <Root>
                 <div className="music-list-style">
@@ -67,13 +113,24 @@ class MusicPages extends React.Component{
                   <ul>
                      {
                          musicAll.map((item,index)=>(
-                            <li key={item.album_id}>{item.song_name}</li>
+                            <li key={item.album_id} onClick={this.clickfun.bind(this,item)}>{item.song_name}</li>
                         ))
                      }
                   </ul>
                 </div>
                 <div className="music-content-style">
-
+                    <div className='music-detail-style'>
+                        {
+                            selectedMusic && (
+                                <div>
+                                     <img src={selectedMusic.img} alt="歌曲图片"/>
+                                     <button><a download={selectedMusic.song_name} href={selectedMusic.play_url}>下载音乐</a></button>
+                                </div>
+                            )
+                        }
+                    
+                    </div>
+                    <div className='music-lyric-style'>ccccc</div>
                 </div>
                 <div className="music-control-style">
 
