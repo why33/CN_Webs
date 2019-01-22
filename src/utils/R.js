@@ -63,6 +63,7 @@ export const articles=[
 //音乐模块
 export const MusicJson=[
     "http://wwwapi.kugou.com/yy/index.php?r=play/getdata&callback=jQuery1910151681780032495_1541658605352&hash=EDAA0AFE0971C7577DF2393322451A0E&album_id=8645856&_=1541658605353",
+    "https://wwwapi.kugou.com/yy/index.php?r=play/getdata&callback=jQuery191069653805110209_1548136580558&hash=344C122AC38D67C41DD1F95668DD46C1&album_id=14608614&_=1548136580559",
     "https://wwwapi.kugou.com/yy/index.php?r=play/getdata&callback=jQuery19107552845154535217_1548048426687&hash=1201B5A4A57039ACFD226F46E539CB6C&album_id=948327&_=1548048426688",
     "http://wwwapi.kugou.com/yy/index.php?r=play/getdata&callback=jQuery19101415737035988851_1541647800869&hash=B220E829FCE5A235395CCC40AA6578DE&album_id=1867181&_=1541647800871",
     "http://wwwapi.kugou.com/yy/index.php?r=play/getdata&callback=jQuery19105993756019309402_1541658367991&hash=6397780C92D55D7ACB94298EF0801B03&album_id=1995573&_=1541658367992",

@@ -30,9 +30,15 @@ const self={
         })
     },
     selectMusicFun:(item)=>async (dispatch,getState)=>{
+        let lys=item.lyrics.split('[').splice(1).map(i=>{
+            return {
+                time:i.split("]")[0],
+                text:i.split("]")[1]
+            }
+        })
         dispatch({
             type:Type.SELECT_MUSIC,
-            data:item,
+            data:[item,lys],
         })
     },
     // getTimeFun:obj=>dispatch=>{
