@@ -3,6 +3,7 @@ import {Icon,Message} from 'antd'
 import IconType from '@icon'
 import styled from 'styled-components'
 import connect from "@connect"
+import MusicControl from './MusicControl'
 
 
 const Root=styled.div`
@@ -128,9 +129,13 @@ const Root=styled.div`
        
     }
     .music-control-style{
+        position:fixed;
+        left:0;
+        bottom:0;
         width:100%;
         height:100px;
-        border-top:1px solid #1890ff;
+        background:#b38760;
+       
     }
 `
 @connect("music")
@@ -199,7 +204,13 @@ class MusicPages extends React.Component{
                     </div>
                 </div>
                 <div className="music-control-style">
-
+                    {
+                        selectedMusic && (
+                            <MusicControl {...this.props}/>
+                        )
+                    }
+                    
+                        
                 </div>
             </Root>
         )
