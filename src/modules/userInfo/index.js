@@ -3,7 +3,7 @@ import {Tabs} from 'antd'
 import styled from 'styled-components'
 import PersonalData from './PersonalData'
 import Contact from './Contact'
-import Collects from './Collects'
+// import Collects from './Collects'
 
 const TabPane = Tabs.TabPane;
 const Root=styled.div`
@@ -91,7 +91,7 @@ const Root=styled.div`
 const titleArray=[
     {title:"我的资料",comp:PersonalData},
     {title:"联系方式",comp:Contact},
-    {title:"我的收藏",comp:Collects}
+    // {title:"我的收藏",comp:Collects}
 ]
 export default class UserInfo extends React.Component{
     constructor(props){

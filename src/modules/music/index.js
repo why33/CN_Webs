@@ -10,45 +10,60 @@ const Root=styled.div`
     display:flex;
     flex-wrap:wrap;
     margin-top:20px; 
+    height:450px;
     box-sizing:border-box;
-    padding:20px;
     box-shadow:0px .5px 5px 0 rgba(187, 187, 187,.8);
-    &>div{
-        border:1px solid #1890ff;
-    }
     .music-list-style{
         width:20%;
-        border-right:1px solid #1890ff;
+        color:#fff;
+        background:rgba(123,126,129,1);
+        display:flex;
+        flex-direction:column;
         .music-list-hearder{
-            font-size:16px;
-            color:#fff;
-            line-height:30px;
+            font-size:20px;
+            line-height:40px;
             text-indent:5px;
-            background:#1890ff;
+            font-weight:bolder; 
+            border-bottom:1px solid rgb(205,205,205);;
         }
         ul{
-            padding:10px 0;
+            color:rgb(205,205,205);
+            overflow-y:auto;
+            overflow-x: hidden;
+            scroll-behavior:smooth;
             list-style:none;
-            margin-bottom:0;
+            margin-bottom:5px;
             li{
                 width:100%;
                 font-size:14px;
                 line-height:30px;
-                text-indent:30px;
                 text-overflow:ellipsis;
                 white-space: nowrap;
                 overflow: hidden;
+                text-indent:15px;
+                span{
+                    display:inline-block;
+                    width:25px;
+                    text-indent:0;
+                }
             }
-            li:not(:last-child){
-                border-bottom:1px solid rgba(187, 187, 187,.8);
+            li:nth-child(2n+1){
+                border-radius:2px;
+                background:rgba(87,89,90,.1);
             }
-            li:hover,.selectedStyle{
+            li:hover,li.selectedStyle{
+                color:#fff;
                 cursor:pointer;
-                font-weight:bolder;
-                color:#1890ff;
-                background:rgba(35, 40, 45,.2);
-            }
+                background:rgba(35, 40, 45,.3);
+            } 
+            
+         
+          
         }
+        ul::-webkit-scrollbar{
+            display: none;
+        }
+       
     }
     .music-content-style{
         width:80%;
@@ -80,7 +95,9 @@ const Root=styled.div`
                 line-height:25px;
                 border-radius:10px;
                 cursor:pointer;
-
+                a{
+                    text-derocation:none;
+                }
             }
             button:hover{
                 border:1px solid #1890ff;
@@ -112,7 +129,7 @@ const Root=styled.div`
     }
     .music-lyric-content-style{
         height:300px;
-        overflow:hidden;
+        overflow-y:scroll;
         margin-top:10px;
         ul{
             font-size:12px;
@@ -126,6 +143,7 @@ const Root=styled.div`
                 overflow: hidden;
             }
         }
+
        
     }
     .music-control-style{
@@ -157,12 +175,12 @@ class MusicPages extends React.Component{
             <Root>
                 <div className="music-list-style">
                   <div className="music-list-hearder">
-                    <Icon type={IconType.iBars}/> 播放列表
+                    <Icon type={IconType.iBars}/> List
                   </div>
                   <ul>
                      {
                          musicAll.map((item,index)=>(
-                            <li key={item.album_id} className={selectedMusic && (item.album_id===selectedMusic.album_id?'selectedStyle':'')} title={item.song_name} onClick={this.clickfun.bind(this,item)}><nobr>{item.song_name}</nobr></li>
+                            <li key={item.album_id} className={selectedMusic && (item.album_id===selectedMusic.album_id?'selectedStyle':'')} title={item.song_name} onClick={this.clickfun.bind(this,item)}><nobr><span>{`${index+1}.`} </span>{item.song_name}</nobr></li>
                         ))
                      }
                   </ul>
@@ -202,7 +220,7 @@ class MusicPages extends React.Component{
                             )
                         }      
                     </div>
-                </div>
+                </div>  
                 <div className="music-control-style">
                     {
                         selectedMusic && (

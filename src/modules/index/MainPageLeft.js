@@ -238,7 +238,7 @@ export default class MainPageLeft extends React.Component{
                             <Input onChange={this.onChangeValue.bind(this)}/><Button onClick={this.onSearch.bind(this,null,true)}>搜索</Button>
                         </div>
                         <div className='labels-style'>
-                            <p><span>标签集合</span></p>
+                            <p><span>前端集合</span></p>
                             <div className='labels-cont-style'>
                                  {
                                     contents.map((item,index)=>(
