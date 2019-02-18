@@ -64,5 +64,13 @@ export default {
                 Message.error("请求失败,内容可能已经不存在了...",3);
             })
     },
+    //页码转换
+    changeCurrentFun:(index,value,obj)=>dispatch=>{
+        obj[index]=value;
+        dispatch({
+            type:Type.CHANGE_CURRENT,
+            data:obj
+        })
+    }
 
 };

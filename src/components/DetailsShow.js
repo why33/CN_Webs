@@ -4,7 +4,7 @@ import iconType from '@icon'
 import styled from 'styled-components'
 import connect from '@connect'
 import MainPageRight from '@comp/MainPageRight'
-import DrawerComp from './DrawerComp'
+// import DrawerComp from './DrawerComp'
 
 const Root=styled.div`
     width:100%;  
@@ -31,15 +31,15 @@ const Root=styled.div`
     .detail-title-style{
         font-size:22px;
         font-weight:bold;
-        text-align:center;
+        text-indent:40px;
         margin-bottom:5px;
     }
     .detail-cont-style{
         font-size:18px;
         &>span{
             display:block;
-            text-align:center;
             font-size:12px;
+            padding-left:40px;
             color:rgba(187, 187, 187, 1);
             margin-top:1em;
             margin-bottom:1em;
@@ -102,6 +102,10 @@ const Root=styled.div`
             cursor:not-allowed;
         }
      }
+     .detail-but-style:nth-child(1){
+         justify-content:flex-end;
+         margin-right:20px;
+     }
 `
 @connect('index','showContent') 
 class DetailShow extends React.Component{
@@ -159,11 +163,11 @@ class DetailShow extends React.Component{
         } );
     }
     //运行代码
-    codeWoking=()=>{
-        this.setState({
-            visible:true
-        })
-    }
+    // codeWoking=()=>{
+    //     this.setState({
+    //         visible:true
+    //     })
+    // }
     //关闭运行
     onClose=()=>{
         this.setState({
@@ -181,7 +185,7 @@ class DetailShow extends React.Component{
                             <div className='detail-show-style'> 
                                 <div className='detail-but-style'>
                                     <button onClick={this.returnIndex.bind(this)}>返回</button>
-                                    {(contentSelected.type==='html')&& <button onClick={this.codeWoking.bind(this)}>运行代码</button>}
+                                    {/* {(contentSelected.type==='html')&& <button onClick={this.codeWoking.bind(this)}>运行代码</button>} */}
                                 </div>
                                 <p className='detail-title-style'>{contentSelected.title}</p>
                                 <div className='detail-cont-style'>
@@ -198,7 +202,7 @@ class DetailShow extends React.Component{
                     }
                 </div>
                 <MainPageRight {...this.props}/>
-                {
+                {/* {
                    contentSelected && contentSelected.type==='html' && (
                         <DrawerComp
                             title={contentSelected.title}
@@ -208,7 +212,7 @@ class DetailShow extends React.Component{
                             <iframe src={contentSelected.url} frameBorder="0" title='运行代码'></iframe>
                         </DrawerComp> 
                    ) 
-                }
+                } */}
                 
             </Root>
         )

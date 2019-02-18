@@ -3,13 +3,13 @@ import connect from '@connect'
 import styled from 'styled-components'
 import MainPageRight from '@comp/MainPageRight'
 import { articles } from '@type'
-import { Icon } from 'antd';
+import { Icon,Pagination } from 'antd';
 import IconType from '@icon';
 const Root=styled.div`
-   &>div>ul{
+   .content-layout-content-style{
+        min-height:495px;
         list-style:none;
         li{ 
-            
             box-sizing:border-box;
             box-shadow:0px .5px 5px 0 rgba(187, 187, 187,.6);
             margin-bottom:15px;
@@ -61,11 +61,20 @@ const Root=styled.div`
             }
         }
    }
+   .ant-pagination{
+       text-align:right;
+   }
 
 `
 
 @connect("index","showContent")
 class Articles extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+            current:this.props.current[1]
+        }
+    }
     //阅读全文
     showDetail=(item,index)=>{
         this.props.contentSelectedFun(item,index,window.location.pathname,()=>this.success(item));
@@ -75,13 +84,21 @@ class Articles extends React.Component{
         this.props.ContentsListFun(articles);
         this.props.history.push(`/detailShow?t=${item.title}`);
     }
+    //分页器变换
+    onChangePage=(page)=>{
+        this.setState({
+            current:page
+        })
+        this.props.changeCurrentFun(1,page,this.props.current);
+    }
     render(){
+        const articlesArr= articles.slice((this.state.current-1)*3,this.state.current*3);
         return (
             <Root className='content-layout-style'>
                 <div>
-                    <ul>
+                    <ul className='content-layout-content-style'>
                         {
-                            articles.map((item,index)=>(
+                            articlesArr.map((item,index)=>(
                                 <li key={index}>
                                    <div className='content-detail-style'>
                                         {
@@ -102,8 +119,10 @@ class Articles extends React.Component{
                             ))
                         }
                     </ul>
+                    <Pagination current={this.state.current} hideOnSinglePage pageSize={3} total={articles.length} onChange={this.onChangePage.bind(this)}/>
                 </div>
-                <MainPageRight {...this.props}/>
+
+                <MainPageRight {...this.props} />
             </Root>
         )
         

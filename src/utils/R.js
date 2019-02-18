@@ -59,6 +59,9 @@ export const articles=[
     {title:"向往西藏",type:'md',url:'/mds/articles/向往西藏.md',img:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547444773979&di=1098411d7559f656fcc93f62fd520cb3&imgtype=0&src=http%3A%2F%2Fbpic.ooopic.com%2F15%2F14%2F62%2F15146299-3f41f443c76c2252fed4b41deb874805.jpg',time:'2019-01-16',content:'有一种心情，叫做突然想去西藏'},
     {title:"云南白水台",type:'md',url:'/mds/articles/云南白水台.md',img:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547785843984&di=b0b39d2048357afd6d4369bcccdd353c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180826%2F0642568bcc8140a991be9c3648f0da54.jpeg',time:'2019-01-18',content:'由于水中的碳酸氢钙经太阳光照射，水分蒸发后形成碳酸钙白色沉积物，之后又不断覆盖地表而形成的泉华地'},
     {title:"天空之镜——茶卡盐湖",type:'md',url:'/mds/articles/茶卡盐湖.md',img:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1547786244862&di=0148f564346e102f84b6dbd0d46a0739&imgtype=0&src=http%3A%2F%2Fimg1.gtimg.com%2Fhb%2Fpics%2Fhv1%2F187%2F200%2F2206%2F143496337.jpeg',time:'2019-01-18',content:'别称茶卡或达布逊淖尔，是位于青海省海西蒙古族藏族自治州乌兰县茶卡镇的天然结晶盐湖，是柴达木盆地四大盐湖之一...'},
+    {title:'喻恩泰——博客摘录1',type:'md',url:'/mds/articles/喻恩泰1.md',img:'http://5b0988e595225.cdn.sohucs.com/images/20171110/5b2f1e11b31642d4a4f8369f723e4bba.jpg',time:'2019-02-18',content:'你来便是花开...'},
+    {title:'喻恩泰——博客摘录2',type:'md',url:'/mds/articles/喻恩泰2.md',img:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550493576260&di=2e24936ad718b44fb32d4e31d24c693a&imgtype=0&src=http%3A%2F%2Fspider.nosdn.127.net%2Fdf385abf7c585aa52930fa1befdbefcd.jpeg',time:'2019-02-19',content:'你来便是花开...'},
+
 ]
 //音乐模块
 export const MusicJson=[

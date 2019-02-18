@@ -2,11 +2,13 @@ import React from 'react'
 import MainPageRight from '@comp/MainPageRight'
 import styled from 'styled-components'
 import { contents} from '@type'
+import {Pagination} from 'antd'
 import connect from '@connect'
 
 const Root=styled.div`
-    .content-style>ul{
+    .content-style>div>ul:nth-child(1){
         list-style:none;
+        min-height:580px;
         li{ 
             padding:20px;
             box-sizing:border-box;
@@ -72,6 +74,9 @@ const Root=styled.div`
             }
         }
     }
+    .ant-pagination{
+        text-align:right;
+    }
     .not-content-Style{
         height:300px;
         text-align:center;
@@ -85,6 +90,12 @@ const Root=styled.div`
 `
 @connect("index","showContent")
 class WebContent extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+            current:this.props.current[0],
+        }
+    }
     //查看全文/查看代码
     detailShow=(item,index)=>{
         let indexArr0=window.location.pathname.split('/');
@@ -97,38 +108,49 @@ class WebContent extends React.Component{
         }
         this.props.contentSelectedFun(item,index,window.location.pathname,()=>success());
     }
+    //分页器变换
+    onChangePage=(page)=>{
+        this.setState({
+            current:page
+        })
+        this.props.changeCurrentFun(0,page,this.props.current);
+    }
     render(){
         let indexArr=window.location.pathname.split('/');
         let index=parseInt(indexArr[indexArr.length-1]);
         let parName=contents[index].title;
         let lists=contents[index].children;
+        const listsArr= (lists||[]).slice((this.state.current-1)*3,this.state.current*3);
         return (
             <Root className='content-layout-style'>
                 <div className="content-style">
                    {
                        lists?(
-                            <ul>
-                                {
-                                    lists.map((item,index)=>(
-                                        <li key={index}>
-                                            <p className='content-title-style' onClick={this.detailShow.bind(this,item,index)}>
-                                                <span>{parName}</span>
-                                                {item.title}
-                                            </p>
-                                            <div>{item.content}</div>
-                                            <div className='content-other-style'>
-                                                <img src='/imgs/user.jpg' alt="用户头像"/>
-                                                <span>
-                                                    <span>类型: {`${item.type==='md'?' 文章':' 代码'}`}</span><br/>
-                                                    {item.time}
-                                                </span>
-                                                
-                                                <button onClick={this.detailShow.bind(this,item,index)}>{`${(item.type==="md")?'阅读全文':'查看代码'}`}</button>
-                                            </div>
-                                        </li>
-                                    ))
-                                }
-                            </ul>
+                           <div>
+                                <ul>
+                                    {
+                                        listsArr.map((item,index)=>(
+                                            <li key={index}>
+                                                <p className='content-title-style' onClick={this.detailShow.bind(this,item,index)}>
+                                                    <span>{parName}</span>
+                                                    {item.title}
+                                                </p>
+                                                <div>{item.content}</div>
+                                                <div className='content-other-style'>
+                                                    <img src='/imgs/user.jpg' alt="用户头像"/>
+                                                    <span>
+                                                        <span>类型: {`${item.type==='md'?' 文章':' 代码'}`}</span><br/>
+                                                        {item.time}
+                                                    </span>
+                                                    
+                                                    <button onClick={this.detailShow.bind(this,item,index)}>{`${(item.type==="md")?'阅读全文':'查看代码'}`}</button>
+                                                </div>
+                                            </li>
+                                        ))
+                                    }
+                                </ul>
+                                <Pagination current={this.state.current} hideOnSinglePage pageSize={3} total={lists.length} onChange={this.onChangePage.bind(this)}/>
+                            </div>
                        ):
                        <div className="not-content-Style">木有添加内容...</div>
                    }
