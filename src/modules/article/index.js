@@ -107,13 +107,13 @@ class Articles extends React.Component{
                                             )
                                         }
                                         <p>
-                                            <span onClick={this.showDetail.bind(this,item,index)}>{item.title}</span>
+                                            <span onClick={this.showDetail.bind(this,item,index+(this.state.current-1)*3)}>{item.title}</span>
                                             {item.content}
                                         </p>
                                    </div>
                                    <div>
                                        <Icon type={IconType.iTime}/> {item.time}
-                                       <button onClick={this.showDetail.bind(this,item,index)}>阅读全文 <Icon theme="filled" type={IconType.iRightCircle}/></button>
+                                       <button onClick={this.showDetail.bind(this,item,index+(this.state.current-1)*3)}>阅读全文 <Icon theme="filled" type={IconType.iRightCircle}/></button>
                                     </div>
                                 </li>
                             ))
