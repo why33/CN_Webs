@@ -7,12 +7,10 @@ import MusicControl from './MusicControl'
 
 
 const Root=styled.div`
-border:1px solid blue;
     display:flex;
-    flex-wrap:wrap;
     align-items:center;
     margin-top:20px; 
-    height:450px;
+    height:500px;
     box-sizing:border-box;
     box-shadow:0px .5px 5px 0 rgba(187, 187, 187,.8);
     .music-list-style{
@@ -163,7 +161,6 @@ border:1px solid blue;
 @connect("music")
 class MusicPages extends React.Component{
     componentWillMount(){
-        console.log(111)
         this.props.musicAll.length>0 || this.props.loadMusicFun(()=>Message.error('请求失败,可能服务器出现问题'));
     }
     componentWillReceiveProps(nextProps){
