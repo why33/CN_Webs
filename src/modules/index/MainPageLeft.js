@@ -17,9 +17,14 @@ const Root=styled.div`
         }
         .search-style{
             display:flex;
+            justify-content:space-between;
             width:100%;
-            margin:10px 0;
+            .ant-input{
+                width:65%;
+            }
             button{
+               width:0;
+               flex-grow:1;
                 margin-left:10px;
             }
         }
@@ -71,43 +76,57 @@ const Root=styled.div`
     .cont-style{
         width:0;
         flex:4;
+       
         .cont-carouse-style{
-            display:block;
+            position:relative;
+            width:100%;
             height:377px;
+            overflow:hidden;
         }
-        .ant-carousel .slick-slide {
-            text-align: center;
-            height:370px;
-            overflow: hidden;
+        .cont-carouse-style>div{
+            position:absolute;
+            width:100%;
+            height:100%;
+
+        }
+        .ant-carousel .slick-slider{
+            width:100%;
+            height:100%;
             &>div{
                 width:100%;
                 height:100%;
-            }
-            .picture-cont-style{
-                position:relative;
-                width:100%;
-                height:100%;
-                img{
-                    width:100%;
+                &>div{
                     height:100%;
                 }
-                p{
-                    position:absolute;
-                    bottom:0px;
-                    left:0;
-                    right:0;
-                    margin:auto;
-                    box-sizing:content-box;
-                    font-size:16px;
-                    height:35px;
-                    color:#fff;
-                    letter-spacing:2px;
-                    font-weight:bolder;
-                    text-align:center;
-                    padding:10px 10px;
-                    background:rgba(167,167,167,.75);
-                }
             }
+        }
+        .ant-carousel .slick-slide {
+           width:100%;
+           height:100%;
+           &>div{
+               width:100%;
+               height:100%;
+           }
+        }
+        .picture-cont-style{
+            position:relative;
+            width:100%;
+            height:100%;
+        }
+        .picture-cont-style img{
+            width:100%;
+            height:100%;
+        }
+        .picture-cont-style p{
+            position:absolute;
+            bottom:0;
+            width:100%;
+            font-size:20px;
+            line-height:40px;
+            height:40px;
+            text-align:center;
+            color:#fff;
+            background:rgba(187, 187, 187,.6);
         }
         .cont-ul-style{
             list-style:none;
@@ -215,15 +234,15 @@ export default class MainPageLeft extends React.Component{
             value:e.target.value
         })
     }
-    onSearch=(val,stu)=>{
-        if(stu){
-            this.props.selectModuleFun('6'); 
-            this.props.history.push(`/search/?val=${this.state.value}`);
-        }else{
-            this.props.selectModuleFun('6');
-            this.props.history.push(`/search/?val=${val}`);
+    onSearch=(val)=>{
+        this.props.selectModuleFun('6');
+        this.props.history.push(`/search/?val=${val}`);
+    }
+    onKeyDown=(e)=>{
+        let ev=window.event||e;
+        if(ev.keyCode===13){
+            this.onSearch(this.state.value)
         }
-        
     }
     //首页标签选中
     selectModule=(key)=>{
@@ -235,7 +254,7 @@ export default class MainPageLeft extends React.Component{
             <Root>
                    <div className='hot-style'>
                         <div className='search-style'>
-                            <Input onChange={this.onChangeValue.bind(this)}/><Button onClick={this.onSearch.bind(this,null,true)}>搜索</Button>
+                            <Input onChange={this.onChangeValue.bind(this)} onKeyDown={this.onKeyDown.bind(this)}/><Button onClick={this.onSearch.bind(this,this.state.value)}>搜索</Button>
                         </div>
                         <div className='labels-style'>
                             <p><span>前端集合</span></p>
@@ -260,7 +279,7 @@ export default class MainPageLeft extends React.Component{
                     </div>
                     <div className='cont-style'>
                         <div className='cont-carouse-style'>
-                            <Carousel fade="fade" autoplay>
+                             <Carousel fade="fade" autoplay> 
                                 {
                                     pictures.map((item,index)=>(
                                         <div key={index} className='picture-cont-style'>
@@ -269,7 +288,8 @@ export default class MainPageLeft extends React.Component{
                                         </div>
                                     ))
                                 }
-                            </Carousel> 
+                            </Carousel>  
+                           
                         </div>
                         <ul className='cont-ul-style'>
                             {

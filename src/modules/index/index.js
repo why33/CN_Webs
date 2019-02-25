@@ -56,7 +56,6 @@ const Root=styled.div`
         box-sizing:border-box;
         padding:10px 15%;
         margin-top:184px;
-        margin-bottom:100px;
     }
     
     
@@ -88,7 +87,9 @@ class MainContent extends React.Component{
     }
     componentDidMount=()=>{
         window.onscroll=()=>{
-            if(window.document.scrollingElement.scrollTop===0){
+            let scrollTop = window.pageYOffset  || document.documentElement.scrollTop || document.body.scrollTop || 0;
+            // let scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+            if(scrollTop===0){
                 this.setState({
                     srollTopStatus:true
                 })
@@ -98,10 +99,16 @@ class MainContent extends React.Component{
                 })
             }
         }
+        window.onpopstate=(e)=>{
+            window.location.reload(e.currentTarget.location.href)
+        }
+
     }
     //返回顶部
     retureTopFun=()=>{
-        window.document.scrollingElement.scrollTop=0;
+        document.document.scrollingElement.scrollTop=0;
+        window.pageYOffset = 0;     
+        document.body.scrollTop = 0;
     }
     render(){
         const {selectedPath,keySelected}=this.props;

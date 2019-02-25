@@ -5,6 +5,7 @@ import thunk from 'redux-thunk'
 import { createStore,applyMiddleware, compose } from 'redux'
 import './index.css';
 import App from './App';
+import 'babel-polyfill';
 import Reducers from './redux/Reducers'
 import * as serviceWorker from './serviceWorker';
 const reduxDevtools = window.devToolsExtension? window.devToolsExtension():f=>f;

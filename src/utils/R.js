@@ -5,6 +5,7 @@ export const links=[
     {title:'鑫空间，鑫生活',url:'https://www.zhangxinxu.com/'},
     {title:'志文工作室',url:'https://lzw.me/cate/art/ued'},
     {title:'阮一峰的个人网站',url:'http://www.ruanyifeng.com/home.html'},
+    {title:'掉进树洞里的猫',url:'https://www.cnblogs.com/WeiGe/'},
 ]
 //首页图片滚动
 export const pictures=[

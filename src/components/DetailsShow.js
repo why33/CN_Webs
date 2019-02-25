@@ -149,7 +149,9 @@ class DetailShow extends React.Component{
        this.props.selectModuleFun('7');
        this.props.contentSelectedFun(item,nums,this.props.contentSelected.path,()=>{
            this.props.history.push(`/detailShow?t=${item.title}`);
-           window.document.scrollingElement.scrollTop=0;
+           document.document.scrollingElement.scrollTop=0;
+           window.pageYOffset = 0;     
+           document.body.scrollTop = 0;
        } );
     }
     //下一篇
@@ -160,6 +162,9 @@ class DetailShow extends React.Component{
         this.props.contentSelectedFun(item,nums,this.props.contentSelected.path,()=>{
             this.props.history.push(`/detailShow?t=${item.title}`);
             window.document.scrollingElement.scrollTop=0;
+            document.document.scrollingElement.scrollTop=0;
+            window.pageYOffset = 0;     
+            document.body.scrollTop = 0;
         } );
     }
     //运行代码
