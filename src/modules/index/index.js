@@ -106,7 +106,7 @@ class MainContent extends React.Component{
     }
     //返回顶部
     retureTopFun=()=>{
-        document.document.scrollingElement.scrollTop=0;
+        document.documentElement.scrollTop=0;
         window.pageYOffset = 0;     
         document.body.scrollTop = 0;
     }
