@@ -12,5 +12,12 @@ export default  {
     iFileText:"file-text",
     iRightCircle:"right-circle",
     iBars:"bars",
-
+    faBackward:"backward",
+    faPause:"play-circle",
+    faPlay:"pause-circle",
+    faForward:"forward",
+    faStop:"stop",
+    faVolume:"sound",
+    faRepeat:"sync",
+    faRandom:"swap"
 }
