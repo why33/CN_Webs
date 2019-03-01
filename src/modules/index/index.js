@@ -55,7 +55,7 @@ const Root=styled.div`
         min-height:20vh;
         box-sizing:border-box;
         padding:10px 15%;
-        margin-top:184px;
+        margin-top:134px;
     }
     
     
@@ -99,8 +99,9 @@ class MainContent extends React.Component{
                 })
             }
         }
+        console.log(document.styleSheets)
         window.onpopstate=(e)=>{
-            window.location.reload(e.currentTarget.location.href)
+            window.location.reload()
         }
 
     }

@@ -12,9 +12,9 @@ const Root=styled.div`
     margin-top:20px; 
     height:500px;
     box-sizing:border-box;
+    margin:50px 0 70px;
     box-shadow:0px .5px 5px 0 rgba(187, 187, 187,.8);
     .music-list-style{
-        border:1px solid red;
         width:20%;
         height:100%;
         color:#fff;
@@ -22,7 +22,7 @@ const Root=styled.div`
         display:flex;
         flex-direction:column;
         .music-list-hearder{
-            font-size:20px;
+            font-size:16px;
             line-height:40px;
             text-indent:5px;
             font-weight:bolder; 
@@ -154,7 +154,7 @@ const Root=styled.div`
         bottom:0;
         width:100%;
         height:100px;
-        background:#b38760;
+        background:#b78d68;
        
     }
 `
@@ -177,7 +177,7 @@ class MusicPages extends React.Component{
             <Root>
                 <div className="music-list-style">
                   <div className="music-list-hearder">
-                    <Icon type={IconType.iBars}/> List
+                    <Icon type={IconType.iBars}/> 播放列表
                   </div>
                   <ul>
                      {

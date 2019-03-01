@@ -6,7 +6,7 @@ const initialState={
     selectedMusicLyric:[],//选中歌词
     // time:0,//播放时间
     // lyricTimeCha:[],//歌词时间差
-    // isPlay:false,//是否播放,
+    isPlay:false,//是否播放,
     // indexSelected:0,//选中歌曲的索引
 };
 const getNewState=function(state=initialState,action){
@@ -35,11 +35,11 @@ const getNewState=function(state=initialState,action){
         //         lyricTimeCha:action.data
 
         //     }
-        // case Type.IS_PLAY:
-        //     return {
-        //         ...state,
-        //         isPlay:action.data
-        //     }
+        case Type.IS_PLAY:
+            return {
+                ...state,
+                isPlay:action.data
+            }
         // case Type.INDEX_SELECTED:
         //     return {
         //         ...state,

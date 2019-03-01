@@ -80,5 +80,6 @@ export const MusicJson=[
     "http://wwwapi.kugou.com/yy/index.php?r=play/getdata&callback=jQuery191010380342338103099_1542615043093&hash=54A947506E98B831E5BF69BB64B20D2F&album_id=1760444&_=1542615043094",
     "http://wwwapi.kugou.com/yy/index.php?r=play/getdata&callback=jQuery19103036728597829872_1542615309214&hash=87D1049EEE8E236836E8340D969D0C0B&album_id=1947052&_=1542615309215",
     "https://wwwapi.kugou.com/yy/index.php?r=play/getdata&callback=jQuery19106117994921958438_1549959453749&hash=0E7860A2E96F4C4B8CB81689DC1776F0&album_id=1590155&_=1549959453750",
+    "https://wwwapi.kugou.com/yy/index.php?r=play/getdata&callback=jQuery19105154257649581104_1551345870803&hash=0D1A367ACDE638FB43600E39C40815CC&album_id=15921266&_=1551345870804",
 ]
 
