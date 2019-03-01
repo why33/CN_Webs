@@ -1,11 +1,18 @@
 import React from 'react'
 import {Icon,Message} from 'antd'
 import IconType from '@icon'
-import styled from 'styled-components'
+import styled,{keyframes} from 'styled-components'
 import connect from "@connect"
 import MusicControl from './MusicControl'
 
-
+const  aniImg=keyframes`
+    0%{
+        transform:rotate(0deg);
+    }
+    100%{
+        transform:rotate(360deg);
+    }
+`
 const Root=styled.div`
     display:flex;
     align-items:center;
@@ -84,12 +91,30 @@ const Root=styled.div`
             flex-direction:column;
             align-items:center;
             padding-top:20px;
-            &>*{
-                width:60%;
-                display:block;
+            &>div{
+                width:55%;
+                height:0;
+                padding-bottom:55%;
+                position:relative;
+            }
+            img{
+                position:absolute;
+                top:0;
+                left:0;
+                width:100%;
+                height:100%;
+                border-radius:50%;
+                border:20px solid #4b4e51;
+            }
+            .activeImg{
+                -webkit-animation:${aniImg} 5s linear infinite forwards running;
+                -moz-animation:${aniImg} 5s linear infinite forwards running;
+                -o-animation:${aniImg} 5s linear infinite forwards running;
+                animation:${aniImg} 5s linear infinite forwards running;
             }
             button{
                 margin-top:30px;
+                width:60%;
                 border:none;
                 outline:none;
                 background:none;
@@ -192,7 +217,9 @@ class MusicPages extends React.Component{
                         {
                             selectedMusic && (
                                 <div>
-                                     <img src={selectedMusic.img} alt="歌曲图片"/>
+                                     <div>
+                                        <img src={selectedMusic.img}  className={this.props.isPlay?'activeImg':''} alt="歌曲图片"/>
+                                     </div>
                                      <button><a target="__blank" href={selectedMusic.play_url}>下载音乐</a></button>
                                 </div>
                             )

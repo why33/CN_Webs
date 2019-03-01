@@ -21,7 +21,7 @@ const Root=styled.div`
             display:flex;
             justify-content:space-around;
             align-items:center;
-            font-size:30px;
+            font-size:32px;
             svg:nth-of-type(2){
                 border:2px solid #fff;
                 padding:10px;
