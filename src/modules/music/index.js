@@ -8,9 +8,17 @@ import MusicControl from './MusicControl'
 const  aniImg=keyframes`
     0%{
         transform:rotate(0deg);
+        -o-transform:rotate(0deg);
+        -webkit-transform:rotate(0deg);
+        -moz-transform:rotate(0deg);
+        -ms-transform:rotate(0deg);
     }
     100%{
         transform:rotate(360deg);
+        -o-transform:rotate(360deg);
+        -webkit-transform:rotate(360deg);
+        -moz-transform:rotate(360deg);
+        -ms-transform:rotate(360deg);
     }
 `
 const Root=styled.div`
@@ -187,11 +195,6 @@ const Root=styled.div`
 class MusicPages extends React.Component{
     componentWillMount(){
         this.props.musicAll.length>0 || this.props.loadMusicFun(()=>Message.error('请求失败,可能服务器出现问题'));
-    }
-    componentWillReceiveProps(nextProps){
-        if(nextProps.musicAll!==this.props.musicAll){
-            this.props.selectMusicFun(nextProps.musicAll[0]);
-        }
     }
     clickfun=(item)=>{
         this.props.selectMusicFun(item);

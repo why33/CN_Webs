@@ -122,15 +122,7 @@ class MusicControl extends React.Component{
         }
     }
     componentWillReceiveProps(nextProps){
-        if(nextProps.isPlay!==this.props.isPlay){
-            this.props.isPlay ? this.audio.pause():this.audio.play();
-            this.setState({
-                currentTime:(this.audio.currentTime/60).toFixed(2)
-            })
-        }
-        if(nextProps.selectedMusic!==this.props.selectedMusic){
-            
-        }
+        
     }
     //播放
     isPlayFun=()=>{
@@ -140,7 +132,6 @@ class MusicControl extends React.Component{
         const {selectedMusic}=this.props;
         return (
             <Root  ref={div=>this.div=div}>
-                <audio id='audio' ref={audio=>this.audio=audio} src={selectedMusic && selectedMusic.play_url}>该浏览器不支持</audio>
                 <div className='controlSty'>
                     <div className='control_play'>
                         <ToolTip title="上一首" direction='left'><Icon type={IconT.faBackward}  theme="filled" /></ToolTip>

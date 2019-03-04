@@ -6,6 +6,7 @@ export const links=[
     {title:'志文工作室',url:'https://lzw.me/cate/art/ued'},
     {title:'阮一峰的个人网站',url:'http://www.ruanyifeng.com/home.html'},
     {title:'掉进树洞里的猫',url:'https://www.cnblogs.com/WeiGe/'},
+    {title:'svg图像制作',url:'https://svg.wxeditor.com/'},
 ]
 //首页图片滚动
 export const pictures=[
@@ -81,5 +82,6 @@ export const MusicJson=[
     "http://wwwapi.kugou.com/yy/index.php?r=play/getdata&callback=jQuery19103036728597829872_1542615309214&hash=87D1049EEE8E236836E8340D969D0C0B&album_id=1947052&_=1542615309215",
     "https://wwwapi.kugou.com/yy/index.php?r=play/getdata&callback=jQuery19106117994921958438_1549959453749&hash=0E7860A2E96F4C4B8CB81689DC1776F0&album_id=1590155&_=1549959453750",
     "https://wwwapi.kugou.com/yy/index.php?r=play/getdata&callback=jQuery19105154257649581104_1551345870803&hash=0D1A367ACDE638FB43600E39C40815CC&album_id=15921266&_=1551345870804",
-]
+    "https://wwwapi.kugou.com/yy/index.php?r=play/getdata&callback=jQuery191045861949028812465_1551678037848&hash=9CAA65F582084AF8EEC4F8F579BB152E&album_id=14596425&_=1551678037849",
+    ]
 
