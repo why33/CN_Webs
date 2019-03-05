@@ -65,35 +65,80 @@ const Root=styled.div`
             }
             .search-other-style:hover{
                 color:rgba(24, 144, 255,.95);
+                border:1px solid rgba(24, 144, 255,.5);
                 box-shadow:0px 6px 6px -3px rgba(24, 144, 255,.3);
                 
             }
             .search-picture-style{
-                position:relative;
-                margin-left:2%;
+                display:inline-block; 
+                vertical-align:top;
                 width:30%;
+                position:relative;
+                height:0;
+                padding-bottom:20%;
+                margin-left:8%;
+                margin-top:20px;
+                border:1px solid rgba(200,200,200,.3);
+                margin-bottom:15px;
+                border-radius:2px;
+                cursor:pointer;
                 font-size:16px;
                 line-height:30px;
                 text-align:center;
-                padding:2px;
-                z-index:100000000;
-                border:1px solid rgba(187, 187, 187,.6);
+                &>div{
+                    position:absolute;
+                    display:flex;
+                    flex-direction:column;
+                    width:100%;
+                    height:100%;
+                    z-index:10;
+                    padding:2px;
+                    background:#fff;
+                    border:1px solid rgba(187, 187, 187,.6);
+                }
                 img{
                     display:block;
+                    height:0;
+                    flex-grow:1;
                     width:100%;
                 }
+                span{
+                    height:30px;
+                }
+            }
+            .search-picture-style::before,
+            .search-picture-style::after{
+                position:absolute;
+                bottom:5px;
+                content:'';
+                width:60%;
+                height:50px;
+                z-index:8;
+                box-shadow:0px 10px 10px -5px rgba(0,0,0,.4);
             }
             .search-picture-style::before{
-                position:absolute;
-                bottom:-1px;
-                left:0;
-                content:'';
-                width:50%;
-                height:5px;
-                z-index:-1;
-                background:red;
-                box-shadow:0px 5px 10px 0px rgba(0,0,0,.6);
-                transform:rotate(-5deg);
+                left:-3px;
+                transform:rotate(-8deg);
+                -webkit-transform: rotate(-8deg) translateZ(0);
+                -o-transform:rotate(-8deg);
+                -moz-transform:rotate(-8deg);
+                -ms-transform:rotate(-8deg);
+            }
+            .search-picture-style::after{
+                right:-3px;
+                transform:rotate(8deg);
+                -webkit-transform: rotate(8deg) translateZ(0);
+                -o-transform:rotate(8deg);
+                -moz-transform:rotate(8deg);
+                -ms-transform:rotate(8deg);
+            }
+            .search-picture-style:hover{
+                color:#1890ff;
+                border:1px solid rgba(24, 144, 255,.5);
+            }
+            .search-picture-style:hover::before,
+            .search-picture-style:hover::after{
+                box-shadow:0px 10px 10px -5px rgba(24, 144, 255,.5);
             }
             .search-other-style{
                 width:90%;
@@ -248,8 +293,11 @@ class SearchPage extends React.Component{
             if(item.type==='picture'){
                 return (
                     <li className='search-picture-style' key={index}>
-                        <img src={item.url} alt={item.title}/>
-                         {item.title}
+                        <div>
+                            <img src={item.url} alt={item.title}/>
+                            <span>{item.title}</span>
+                        </div>
+                        
                     </li>
                 )
             }else{

@@ -116,6 +116,7 @@ const Root=styled.div`
         .picture-cont-style img{
             width:100%;
             height:100%;
+            cursor:pointer;
         }
         .picture-cont-style p{
             position:absolute;
@@ -241,12 +242,17 @@ export default class MainPageLeft extends React.Component{
     onKeyDown=(e)=>{
         let ev=window.event||e;
         if(ev.keyCode===13){
-            this.onSearch(this.state.value)
+            this.onSearch(this.state.value);
         }
     }
     //首页标签选中
     selectModule=(key)=>{
         this.props.selectModuleFun(key);
+    }
+    //跳转到图片页面
+    rediPic=()=>{
+        this.props.selectModuleFun('4');
+        this.props.history.push(`/picture`);
     }
     render(){
         const { contentsList }=this.props;//主页资讯限制为3个
@@ -281,12 +287,17 @@ export default class MainPageLeft extends React.Component{
                         <div className='cont-carouse-style'>
                              <Carousel fade="fade" autoplay> 
                                 {
-                                    pictures.map((item,index)=>(
-                                        <div key={index} className='picture-cont-style'>
-                                            <img key={index} src={item.url} alt={`图片-${index+1}`}/>
-                                            <p>{item.title}</p>
-                                        </div>
-                                    ))
+                                    pictures.slice(0,4).map((item,index)=>{
+                                       
+                                            return (
+                                                <div key={index} className='picture-cont-style'>
+                                                    <img key={index} src={item.url} alt={`图片-${index+1}`} onClick={this.rediPic.bind(this)}/>
+                                                    <p>{item.title}</p>
+                                                </div>
+                                            )
+                                        
+                                        
+                                    })
                                 }
                             </Carousel>  
                            

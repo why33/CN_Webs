@@ -192,7 +192,6 @@ class MainContent extends React.Component{
                 })
             }
         }
-        console.log(document.styleSheets)
         window.onpopstate=(e)=>{
             window.location.reload();
         }
@@ -234,7 +233,7 @@ class MainContent extends React.Component{
                                     </SubMenu>
                                     <Menu.Item key="2"><Link to='/article'><Icon type={iconType.iBook} />文章</Link></Menu.Item>
                                     <Menu.Item key="3"><Link to='/music'><Icon type={iconType.iMusic} />我爱Music</Link></Menu.Item>
-                                    <Menu.Item key="4"><Link to='/text'><Icon type={iconType.iPicture} />独家记忆</Link></Menu.Item>
+                                    <Menu.Item key="4"><Link to='/picture'><Icon type={iconType.iPicture} />独家记忆</Link></Menu.Item>
                                     <Menu.Item key="5"><Link to='/intro'><Icon type={iconType.iUser} />关于古罗马</Link></Menu.Item> 
                                 </Menu>
                                  <audio id='audio' ref={audio=>this.audio=audio} src={selectedMusic && selectedMusic.play_url}>该浏览器不支持</audio>

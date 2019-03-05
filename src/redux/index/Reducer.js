@@ -18,6 +18,10 @@ const LoadableComMusic=Loadable({
     loader:()=>import('@module/music'),
     loading:LoadingComponent
 })
+const LoadableComPicture=Loadable({
+    loader:()=>import('@module/picture'),
+    loading:LoadingComponent
+})
 const LoadableComUser=Loadable({
     loader:()=>import('@module/userInfo'),
     loading:LoadingComponent
@@ -53,8 +57,8 @@ const paths=[
     },
     {
         key:'4',
-        url:'/intro2',
-        comp:LoadableComUser
+        url:'/picture',
+        comp:LoadableComPicture
     },{
         
         key:'5',
