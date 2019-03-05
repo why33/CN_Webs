@@ -59,31 +59,47 @@ const Root=styled.div`
             li{
                 box-sizing:border-box;
                 border:1px solid rgba(200,200,200,.3);
-                box-shadow:0px 1.5px 2px 0px rgba(187, 187, 187,.6);
                 margin-bottom:15px;
                 border-radius:2px;
                 cursor:pointer;
             }
-            li:hover{
-                box-shadow:1px 2px 3px .5px rgba(187, 187, 187,1);
+            .search-other-style:hover{
+                color:rgba(24, 144, 255,.95);
+                box-shadow:0px 6px 6px -3px rgba(24, 144, 255,.3);
+                
             }
             .search-picture-style{
-                display:line-block;
+                position:relative;
                 margin-left:2%;
                 width:30%;
                 font-size:16px;
                 line-height:30px;
                 text-align:center;
+                padding:2px;
+                z-index:100000000;
+                border:1px solid rgba(187, 187, 187,.6);
                 img{
                     display:block;
                     width:100%;
                 }
-
+            }
+            .search-picture-style::before{
+                position:absolute;
+                bottom:-1px;
+                left:0;
+                content:'';
+                width:50%;
+                height:5px;
+                z-index:-1;
+                background:red;
+                box-shadow:0px 5px 10px 0px rgba(0,0,0,.6);
+                transform:rotate(-5deg);
             }
             .search-other-style{
                 width:90%;
                 padding:20px 10px;
                 margin:10px auto;
+                box-shadow:0px 6px 6px -3px rgba(187, 187, 187,.6);
                 &>p{
                     font-size:18px;
                     font-weight:bold;

@@ -103,9 +103,9 @@ const Root=styled.div`
             height:70px;
             padding:10px 15px 15px;
             border-radius:50%;
-            background:rgba(197,197,197, 0.5);
+            background:rgba(200,200,200,.15);
             cursor:pointer;
-            box-shadow:0px 3px 5px 0 rgba(187, 187, 187,.8);
+            box-shadow:1px 3px 5px 0 rgba(187, 187, 187,.8);
             img{
                 width:100%;
                 height:100%;
@@ -119,7 +119,7 @@ const Root=styled.div`
             width:140%;
             height:140%;
             border-style:solid;
-            border-color:#4b4e51;
+            border-color:#5f6265;
             border-radius:50%;
             z-index:-1;
             box-shadow:0px 3px 5px 0 rgba(187, 187, 187,.8);
