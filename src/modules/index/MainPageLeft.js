@@ -216,10 +216,10 @@ export default class MainPageLeft extends React.Component{
     componentDidMount(){
         this.props.handleContentsFun(contents);
     }
-     //热门点击事件
-    onClickFun=()=>{
+    //  //热门点击事件
+    // onClickFun=()=>{
         
-    }
+    // }
     //资讯详情
     onClickInfor=(item,index)=>{
         this.props.contentSelectedFun(item,index,"/",()=>this.success(item));

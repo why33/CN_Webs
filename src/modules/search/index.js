@@ -23,17 +23,18 @@ const Root=styled.div`
     }
     .search-content-style{
         width:90%;
-        min-height:300px;
+        min-height:400px;
         margin:50px auto;
         &>ul{
             list-style:none;
             display:flex;
-            border-bottom: 1px solid #e8e8e8;
+            position:relative;
+            border-bottom: 2px solid  #1890ff;
             li{
                 flex:1;
                 font-size:20px;
                 font-weight:bold;
-                line-height:40px;
+                line-height:50px;
                 text-align:center;
                 span{
                     cursor:pointer;
@@ -43,7 +44,18 @@ const Root=styled.div`
                 }
             }
             .activeStyle{
+                position:relative;
                 color: #1890ff;
+            }
+            .activeStyle::after{
+                position:absolute;
+                font-size:14px;
+                content:"▲";
+                line-height:10px;
+                bottom:0;
+                left:0;
+                right:0;
+                margin:0 auto;
             }
         }
         .ant-tabs-bar{
@@ -69,23 +81,24 @@ const Root=styled.div`
                 box-shadow:0px 6px 6px -3px rgba(24, 144, 255,.3);
                 
             }
+            
             .search-picture-style{
                 display:inline-block; 
                 vertical-align:top;
-                width:30%;
+                width:20%;
                 position:relative;
                 height:0;
-                padding-bottom:20%;
-                margin-left:8%;
-                margin-top:20px;
+                padding-bottom:15%;
+                margin-left:10%;
+                margin-top:2%;
                 border:1px solid rgba(200,200,200,.3);
-                margin-bottom:15px;
+                margin-bottom:2%;
                 border-radius:2px;
                 cursor:pointer;
                 font-size:16px;
                 line-height:30px;
                 text-align:center;
-                &>div{
+                &>div:last-child{
                     position:absolute;
                     display:flex;
                     flex-direction:column;
@@ -95,19 +108,26 @@ const Root=styled.div`
                     padding:2px;
                     background:#fff;
                     border:1px solid rgba(187, 187, 187,.6);
-                }
-                img{
-                    display:block;
-                    height:0;
-                    flex-grow:1;
-                    width:100%;
-                }
-                span{
-                    height:30px;
+                    &>div{
+                        height:0;
+                        flex-grow:1;
+                        width:100%;
+                        img{
+                            width:100%;
+                            height:100%;
+                        }
+                    }
+                    span{
+                        display:block;
+                        height:30px;
+                        text-overflow:ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                    }
                 }
             }
-            .search-picture-style::before,
-            .search-picture-style::after{
+            .picLiStyle::before,
+            .picLiStyle::after{
                 position:absolute;
                 bottom:5px;
                 content:'';
@@ -116,7 +136,7 @@ const Root=styled.div`
                 z-index:8;
                 box-shadow:0px 10px 10px -5px rgba(0,0,0,.4);
             }
-            .search-picture-style::before{
+            .picLiStyle::before{
                 left:-3px;
                 transform:rotate(-8deg);
                 -webkit-transform: rotate(-8deg) translateZ(0);
@@ -124,7 +144,7 @@ const Root=styled.div`
                 -moz-transform:rotate(-8deg);
                 -ms-transform:rotate(-8deg);
             }
-            .search-picture-style::after{
+            .picLiStyle::after{
                 right:-3px;
                 transform:rotate(8deg);
                 -webkit-transform: rotate(8deg) translateZ(0);
@@ -132,12 +152,92 @@ const Root=styled.div`
                 -moz-transform:rotate(8deg);
                 -ms-transform:rotate(8deg);
             }
-            .search-picture-style:hover{
+            .picLiStyle:hover{
                 color:#1890ff;
                 border:1px solid rgba(24, 144, 255,.5);
             }
-            .search-picture-style:hover::before,
-            .search-picture-style:hover::after{
+            .showPicStyle{
+                position:fixed;
+                top:0;
+                left:0;
+                width:100%;
+                height:100%;
+                box-sizing:border-box;
+                margin:0;
+                cursor:default;
+                background:rgba(35,40,45,.9);
+                z-index:9999;
+                &>div:nth-of-type(2){
+                    width:56%;
+                    height:50%;
+                    top:20%;
+                    left:22%;
+                    border-radius:5px;
+                    box-shadow:1px 1px 15px 1px rgba(255,255, 255,.3);
+                }
+                &>div:nth-of-type(1){
+                    position:fixed;
+                    width:100%;
+                    height:100%;
+                    color:#c0c0c0;
+                    span{
+                        position:fixed; 
+                        font-size:40px;
+                        cursor:pointer;
+                    }
+                    span:hover{
+                        color:#fff;
+                    }
+                    .cancel_but{
+                        top:10px;
+                        right:10px;
+                       
+                    }
+                    .prev_but{
+                        top:43%;
+                        left:15%;
+                        font-size:80px;
+                    }
+                    .next_but{
+                        top:43%;
+                        right:15%;
+                        font-size:80px;
+                    }
+                   
+                }
+            }
+            .picLiStyle::before,
+            .picLiStyle::after{
+                position:absolute;
+                bottom:5px;
+                content:'';
+                width:60%;
+                height:50px;
+                z-index:8;
+                box-shadow:0px 10px 10px -5px rgba(0,0,0,.4);
+            }
+            .picLiStyle::before{
+                left:-3px;
+                transform:rotate(-8deg);
+                -webkit-transform: rotate(-8deg) translateZ(0);
+                -o-transform:rotate(-8deg);
+                -moz-transform:rotate(-8deg);
+                -ms-transform:rotate(-8deg);
+            }
+            .picLiStyle::after{
+                right:-3px;
+                transform:rotate(8deg);
+                -webkit-transform: rotate(8deg) translateZ(0);
+                -o-transform:rotate(8deg);
+                -moz-transform:rotate(8deg);
+                -ms-transform:rotate(8deg);
+            }
+            .picLiStyle:hover{
+                color:#1890ff;
+                border:1px solid rgba(24, 144, 255,.5);
+            }
+            .picLiStyle:hover::before,
+            .picLiStyle:hover::after{
                 box-shadow:0px 10px 10px -5px rgba(24, 144, 255,.5);
             }
             .search-other-style{
@@ -202,7 +302,8 @@ class SearchPage extends React.Component{
         this.state={
             key:0,
             value:decodeURIComponent(window.location.search).split("=")[1] || '',
-            searchResult:null
+            searchResult:null,
+            show:[0,false],//图片展示
         }
     }
     componentDidMount(){
@@ -288,16 +389,61 @@ class SearchPage extends React.Component{
         this.props.ContentsListFun(objs);
         this.props.history.push(`/detailShow?t=${item.title}`);
     }
+    //图片展示
+    showPicture=(index,status)=>{
+        !status &&　this.setState({
+            show:[index,true]
+        })
+    }
+    //关闭图片展示
+    cancelPic=()=>{
+        this.setState({
+            show:[0,false]
+        })
+    }
+    //上一页图片
+    prevPic=()=>{
+        if(this.state.show[0]!==0){
+            this.setState({
+                show:[this.state.show[0]-1,true],
+            })
+        }
+    }
+    //下一页图片
+    nextPic=()=>{
+        if(this.state.show[0]!==(pictures.length-1)){
+            this.setState({
+                show:[this.state.show[0]+1,true],
+            })
+        }
+        
+    }
     mapLisCont=(obj)=>{
         return obj.map((item,index)=>{
             if(item.type==='picture'){
+                let status=(this.state.show[0]===index && this.state.show[1]);
                 return (
-                    <li className='search-picture-style' key={index}>
-                        <div>
-                            <img src={item.url} alt={item.title}/>
+                    <li 
+                        className={`search-picture-style ${status?'showPicStyle':'picLiStyle'}`} 
+                        key={index} 
+                        onClick={this.showPicture.bind(this,index,status)}
+                    >
+                        {
+                            status && (
+                                <div>
+                                    <span className='cancel_but' onClick={this.cancelPic.bind(this)}> &#10008; </span>
+                                    <span className='prev_but' onClick={this.prevPic.bind(this)} hidden={index===0?true:false}> &#139; </span>
+                                    <span className='next_but' onClick={this.nextPic.bind(this)} hidden={index===(obj.length-1)?true:false}> &#155; </span>
+                                </div>
+
+                            )
+                        }
+                        <div title={item.title}>
+                            <div>
+                                <img src={item.url} alt={item.title} />
+                            </div>
                             <span>{item.title}</span>
                         </div>
-                        
                     </li>
                 )
             }else{

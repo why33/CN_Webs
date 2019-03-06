@@ -16,6 +16,13 @@ export const pictures=[
    {'title':'林芝--西藏江南',type:'picture',url:'https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2730363537,1039270330&fm=173&app=25&f=JPEG?w=640&h=400&s=F32726E2061A366522238844030070FA'},
    {'title':'张家界--十里画廊',type:'picture',url:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551791725133&di=e78ad947787b1d5fcedbc9b5d7e1060a&imgtype=0&src=http%3A%2F%2Fpic3.40017.cn%2Fzzy%2Fcommon%2F2015%2F07%2F24%2F18%2FIyu8Nq.jpg'},
    {'title':'张家界--天门山',type:'picture',url:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551791912409&di=16f66afd1d57f33a3e7e3975bb8794dd&imgtype=0&src=http%3A%2F%2Fimg8.zol.com.cn%2Fbbs%2Fupload%2F22500%2F22499136.jpg'},
+   {'title':'凤凰古城',type:'picture',url:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551848827456&di=b469777b7b8e3505e70e3b69566dd39d&imgtype=0&src=http%3A%2F%2Fpic3.40017.cn%2Fscenery%2Fdestination%2F2015%2F04%2F19%2F06%2Fb715Hf.jpg'},
+   {'title':'青海--茶卡盐湖',type:'picture',url:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551848948327&di=449aff06c6960ac90c7bb7ce4816f675&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D272556728%2C3837004676%26fm%3D214%26gp%3D0.jpg'},
+   {'title':'茶卡盐湖',type:'picture',url:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551850139264&di=7d2eb824365fefd95630ef554a22f79b&imgtype=0&src=http%3A%2F%2Fm.tuniucdn.com%2Ffb2%2Ft1%2FG2%2FM00%2F05%2F1F%2FCii-TleERdGIOh5iAAMPt5e9u00AAAGrAHtpVUAAw_P379_w500_h280_c1_t0.jpg'},
+   {'title':'青海',type:'picture',url:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551851065609&di=eac80e4c14259542cd6e86f1ac0913bd&imgtype=0&src=http%3A%2F%2Fs11.sinaimg.cn%2Fmw690%2F002UG6bpty6M3RfWPBU3a%26690'},
+   {'title':'甘肃--胡杨林',type:'picture',url:'http://5b0988e595225.cdn.sohucs.com/images/20171028/94224ea418cd471ca8db3ab99982e71f.jpeg'},
+   {'title':'甘肃--金塔胡杨林',type:'picture',url:'http://5b0988e595225.cdn.sohucs.com/images/20171028/534df54e568441b590b383bec32b9513.jpeg'},
+   {'title':'胡杨林',type:'picture',url:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551863148247&di=fc939a8578b31095e60150db262f8cab&imgtype=0&src=http%3A%2F%2Fdingyue.nosdn.127.net%2FBly5LsJeQ%3DEeUsoSC2QsONtWtijAVqN4gU1jP1SXaSd9%3D1537323792493compressflag.jpg'},
 ]
 //web内容对应目录(如果没有children，就不要写children，否则修改程序)
 export const contents=[

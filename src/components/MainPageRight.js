@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import HotTabs from './HotTabs'
+// import HotTabs from './HotTabs'
 import connect from '@connect'
 import {links,contents} from '@type'
 import {Input,Button} from 'antd'

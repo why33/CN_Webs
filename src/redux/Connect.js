@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import index from './index/Action';
 import showContent from './showContent/Action';
 import music from './music/Action';
+import picture from './picture/Action';
 
 const actions={
     index,
     showContent,
     music,
+    picture,
 }
 const reduceObjects = objArr => objArr.reduce((a, b) => ({
     ...a,
