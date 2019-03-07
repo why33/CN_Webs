@@ -1,5 +1,5 @@
 import React from 'react'
-import {Icon,Message} from 'antd'
+import {Icon,Message,Button} from 'antd'
 import IconType from '@icon'
 import styled,{keyframes} from 'styled-components'
 import connect from "@connect"
@@ -190,14 +190,26 @@ const Root=styled.div`
         background:#b78d68;
        
     }
+    .search-control-style{
+        position:fixed;
+        right:20px;
+        top:220px;
+        font-size:20px;
+      
+    }
 `
-@connect("music")
+@connect("music","index")
 class MusicPages extends React.Component{
     componentWillMount(){
         this.props.musicAll.length>0 || this.props.loadMusicFun(()=>Message.error('请求失败,可能服务器出现问题'));
     }
     clickfun=(item)=>{
         this.props.selectMusicFun(item);
+    }
+    //跳转到搜索页面
+    searchPage=()=>{
+        this.props.selectModuleFun('6');
+        this.props.history.push(`/search/?val=`);
     }
     render(){
         const {musicAll,selectedMusic,selectedMusicLyric}=this.props;
@@ -258,9 +270,10 @@ class MusicPages extends React.Component{
                         selectedMusic && (
                             <MusicControl {...this.props}/>
                         )
-                    }
-                    
-                        
+                    }   
+                </div>
+                <div className="search-control-style">
+                    <Button shape="circle" icon={IconType.iSearch} onClick={this.searchPage.bind(this)} />
                 </div>
             </Root>
         )

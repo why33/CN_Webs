@@ -21,6 +21,9 @@ const Root=styled.div`
             margin-right:10px;
             margin-bottom:20px;
         }
+        button{
+            margin-right:10%;
+        }
     }
     .picture-contents-cont-style{
         position:relative;

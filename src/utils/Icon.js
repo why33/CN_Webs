@@ -5,6 +5,7 @@ export default  {
     iMusic:"customer-service",
     iBook:"book",
     iArrowDown:"down",
+    iSearch:"search",
     iCode:"code",
     iTime:"clock-circle",
     iLeft:"left",

@@ -1,8 +1,10 @@
 import React from 'react'
-import {Tabs} from 'antd'
+import {Tabs,Button} from 'antd'
 import styled from 'styled-components'
 import PersonalData from './PersonalData'
 import Contact from './Contact'
+import IconType from '@icon'
+import connect from "@connect"
 // import Collects from './Collects'
 
 const TabPane = Tabs.TabPane;
@@ -86,6 +88,13 @@ const Root=styled.div`
            }
        }
    }
+   .search-control-style{
+        position:fixed;
+        right:20px;
+        top:220px;
+        font-size:20px;
+    
+    }
 
 `
 const titleArray=[
@@ -93,7 +102,8 @@ const titleArray=[
     {title:"联系方式",comp:Contact},
     // {title:"我的收藏",comp:Collects}
 ]
-export default class UserInfo extends React.Component{
+@connect("index")
+class UserInfo extends React.Component{
     constructor(props){
         super(props);
         this.state={
@@ -104,6 +114,11 @@ export default class UserInfo extends React.Component{
         this.setState({
             key:val
         })
+    }
+    //跳转到搜索页面
+    searchPage=()=>{
+        this.props.selectModuleFun('6');
+        this.props.history.push(`/search/?val=`);
     }
     render(){
         return (
@@ -138,7 +153,11 @@ export default class UserInfo extends React.Component{
                         </Tabs>
                     </div>
                </div>
+               <div className="search-control-style">
+                    <Button shape="circle" icon={IconType.iSearch} onClick={this.searchPage.bind(this)} />
+                </div>
             </Root>
         )
     }
 }
+export default UserInfo;
