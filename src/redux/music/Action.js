@@ -59,10 +59,10 @@ const self={
         type:Type.IS_PLAY,
         data:val
     }),
-    // //播放索引
-    // indexSelectedFun:val=>dispatch=>dispatch({
-    //     type:Type.INDEX_SELECTED,
-    //     data:val
-    // }),
+    //播放索引
+    indexSelectedFun:val=>dispatch=>dispatch({
+        type:Type.INDEX_SELECTED,
+        data:val
+    }),
 }
 export default self;

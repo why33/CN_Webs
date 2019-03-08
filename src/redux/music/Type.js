@@ -4,6 +4,6 @@ const ActionType={
     // GET_TIME:'get_time',
     // GET_LYRIC_TIME_CHA:'get_lyric_time_cha',
     IS_PLAY:'is_play',
-    // INDEX_SELECTED:'index_selected',
+    INDEX_SELECTED:'index_selected',
 }
 export default ActionType;

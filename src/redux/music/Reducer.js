@@ -7,7 +7,7 @@ const initialState={
     // time:0,//播放时间
     // lyricTimeCha:[],//歌词时间差
     isPlay:false,//是否播放,
-    // indexSelected:0,//选中歌曲的索引
+    indexSelected:0,//选中歌曲的索引
 };
 const getNewState=function(state=initialState,action){
     switch(action.type){
@@ -40,11 +40,11 @@ const getNewState=function(state=initialState,action){
                 ...state,
                 isPlay:action.data
             }
-        // case Type.INDEX_SELECTED:
-        //     return {
-        //         ...state,
-        //         indexSelected:action.data
-        //     }
+        case Type.INDEX_SELECTED:
+            return {
+                ...state,
+                indexSelected:action.data
+            }
         default:
             return state
     }

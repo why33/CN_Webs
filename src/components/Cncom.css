@@ -128,9 +128,10 @@
     margin:0 auto;
 }
 .Range-ver{
-    width:4px;
+    width:6px;
     height:100px;
-    border-radius:10%;
+    border-radius:5px;
+    cursor: pointer;
     background:#a7a7a7;
     transform:rotate(180deg);
     -webkit-transform:rotate(180deg);
@@ -139,6 +140,7 @@
 .Range-ver>span{
     display: block;
     width:100%;
+    border-radius:5px;
     background:#ffffff;
 }
 /* ------------------------------------------------------------------ */

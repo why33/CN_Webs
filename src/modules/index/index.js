@@ -9,6 +9,7 @@ import {contents} from '@type'
 import musicIcon from '../../music.svg'
 import FooterContent from '@comp/FooterContent';
 import { ToolTip } from '@cncomp'
+import MusicControl from '../music/MusicControl'
 
 const SubMenu = Menu.SubMenu;
 const { Header, Content, Footer } = Layout;
@@ -89,6 +90,15 @@ const Root=styled.div`
         }
         
     }
+    .music-control-style{
+        position:fixed;
+        left:0;
+        bottom:0;
+        width:100%;
+        height:100px;
+        background:#b78d68;
+       
+    }
     .content-Style{
         width:100%;
         min-height:20vh;
@@ -164,20 +174,6 @@ class MainContent extends React.Component{
     onSelectFun=(obj)=>{
         this.props.selectModuleFun(obj.key);
     }
-    componentWillReceiveProps(nextProps){
-        if(nextProps.musicAll!==this.props.musicAll){
-            this.props.selectMusicFun(nextProps.musicAll[0]);
-        }
-        if(nextProps.isPlay!==this.props.isPlay){
-            this.props.isPlay ? this.audio.pause():this.audio.play();
-            this.setState({
-                currentTime:(this.audio.currentTime/60).toFixed(2)
-            })
-        }
-        if(nextProps.selectedMusic!==this.props.selectedMusic){
-            
-        }
-    }
     componentDidMount=()=>{
         window.onscroll=()=>{
             let scrollTop = window.pageYOffset  || document.documentElement.scrollTop || document.body.scrollTop || 0;
@@ -209,7 +205,7 @@ class MainContent extends React.Component{
         this.props.isPlayFunction(!this.props.isPlay);
     }
     render(){
-        const {selectedPath,keySelected,selectedMusic,isPlay}=this.props;
+        const {selectedPath,keySelected,isPlay}=this.props;
         return (
            <Root>
                <Router>
@@ -236,7 +232,6 @@ class MainContent extends React.Component{
                                     <Menu.Item key="3"><Link to='/music'><Icon type={iconType.iMusic} />我爱Music</Link></Menu.Item>
                                     <Menu.Item key="5"><Link to='/intro'><Icon type={iconType.iUser} />关于古罗马</Link></Menu.Item> 
                                 </Menu>
-                                 <audio id='audio' ref={audio=>this.audio=audio} src={selectedMusic && selectedMusic.play_url}>该浏览器不支持</audio>
 
                             </div>
                         </Header>
@@ -246,6 +241,9 @@ class MainContent extends React.Component{
                                 <Route path={selectedPath.url} component={selectedPath.comp}/>
                             </div>
                         </Content>
+                        <div className="music-control-style" hidden={(window.location.pathname==="/music")?false:true}>
+                            <MusicControl {...this.props}  />   
+                        </div>
                         <Footer>
                             <FooterContent/>
                         </Footer>

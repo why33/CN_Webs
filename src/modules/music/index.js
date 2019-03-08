@@ -3,7 +3,7 @@ import {Icon,Message,Button} from 'antd'
 import IconType from '@icon'
 import styled,{keyframes} from 'styled-components'
 import connect from "@connect"
-import MusicControl from './MusicControl'
+
 
 const  aniImg=keyframes`
     0%{
@@ -181,15 +181,6 @@ const Root=styled.div`
 
        
     }
-    .music-control-style{
-        position:fixed;
-        left:0;
-        bottom:0;
-        width:100%;
-        height:100px;
-        background:#b78d68;
-       
-    }
     .search-control-style{
         position:fixed;
         right:20px;
@@ -203,7 +194,8 @@ class MusicPages extends React.Component{
     componentWillMount(){
         this.props.musicAll.length>0 || this.props.loadMusicFun(()=>Message.error('请求失败,可能服务器出现问题'));
     }
-    clickfun=(item)=>{
+    clickfun=(item,index)=>{
+        this.props.indexSelectedFun(index);
         this.props.selectMusicFun(item);
     }
     //跳转到搜索页面
@@ -211,6 +203,7 @@ class MusicPages extends React.Component{
         this.props.selectModuleFun('6');
         this.props.history.push(`/search/?val=`);
     }
+    
     render(){
         const {musicAll,selectedMusic,selectedMusicLyric}=this.props;
         return (
@@ -222,7 +215,7 @@ class MusicPages extends React.Component{
                   <ul>
                      {
                          musicAll.map((item,index)=>(
-                            <li key={item.album_id} className={selectedMusic && (item.album_id===selectedMusic.album_id?'selectedStyle':'')} title={item.song_name} onClick={this.clickfun.bind(this,item)}><nobr><span>{`${index+1}.`} </span>{item.song_name}</nobr></li>
+                            <li key={item.album_id} className={selectedMusic && (item.album_id===selectedMusic.album_id?'selectedStyle':'')} title={item.song_name} onClick={this.clickfun.bind(this,item,index)}><nobr><span>{`${index+1}.`} </span>{item.song_name}</nobr></li>
                         ))
                      }
                   </ul>
@@ -265,13 +258,7 @@ class MusicPages extends React.Component{
                         }      
                     </div>
                 </div>  
-                <div className="music-control-style">
-                    {
-                        selectedMusic && (
-                            <MusicControl {...this.props}/>
-                        )
-                    }   
-                </div>
+                
                 <div className="search-control-style">
                     <Button shape="circle" icon={IconType.iSearch} onClick={this.searchPage.bind(this)} />
                 </div>
