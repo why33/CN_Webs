@@ -148,12 +148,12 @@ const Root=styled.div`
                 .prev_but{
                     top:43%;
                     left:15%;
-                    font-size:80px;
+                    font-size:50px;
                 }
                 .next_but{
                     top:43%;
                     right:15%;
-                    font-size:80px;
+                    font-size:50px;
                 }
                
             }
@@ -238,8 +238,8 @@ class PictureContent extends React.Component{
                             status && (
                                 <div>
                                     <span className='cancel_but' onClick={this.cancelPic.bind(this)}> &#10008; </span>
-                                    <span className='prev_but' onClick={this.prevPic.bind(this)} hidden={index===0?true:false}> &#139; </span>
-                                    <span className='next_but' onClick={this.nextPic.bind(this)} hidden={index===(pictures.length-1)?true:false}> &#155; </span>
+                                    <span className='prev_but' onClick={this.prevPic.bind(this)} hidden={index===0?true:false}> ◀ </span>
+                                    <span className='next_but' onClick={this.nextPic.bind(this)} hidden={index===(pictures.length-1)?true:false}> ▶ </span>
                                 </div>
 
                             )

@@ -1,26 +1,29 @@
 import React from 'react'
 import {Icon,Message,Button} from 'antd'
 import IconType from '@icon'
-import styled,{keyframes} from 'styled-components'
+import styled from 'styled-components'
 import connect from "@connect"
+import "./ani.css"
 
 
-const  aniImg=keyframes`
-    0%{
-        transform:rotate(0deg);
-        -o-transform:rotate(0deg);
-        -webkit-transform:rotate(0deg);
-        -moz-transform:rotate(0deg);
-        -ms-transform:rotate(0deg);
-    }
-    100%{
-        transform:rotate(360deg);
-        -o-transform:rotate(360deg);
-        -webkit-transform:rotate(360deg);
-        -moz-transform:rotate(360deg);
-        -ms-transform:rotate(360deg);
-    }
-`
+// const  aniImg=keyframes`
+//     0%{
+//         -o-transform:rotate(0deg);
+//         -webkit-transform:rotate(0deg);
+//         -moz-transform:rotate(0deg);
+//         -ms-transform:rotate(0deg);
+//         transform:rotate(0deg);
+//     }
+//     100%{
+        
+//         -o-transform:rotate(360deg);
+//         -webkit-transform:rotate(360deg);
+//         -moz-transform:rotate(360deg);
+//         -ms-transform:rotate(360deg);
+//         transform:rotate(360deg);
+//     }
+// `
+
 const Root=styled.div`
     display:flex;
     align-items:center;
@@ -115,10 +118,12 @@ const Root=styled.div`
                 border:20px solid #4b4e51;
             }
             .activeImg{
-                -webkit-animation:${aniImg} 5s linear infinite forwards running;
-                -moz-animation:${aniImg} 5s linear infinite forwards running;
-                -o-animation:${aniImg} 5s linear infinite forwards running;
-                animation:${aniImg} 5s linear infinite forwards running;
+                animation:aniImg 5s linear infinite forwards running;
+                -webkit-animation:aniImg 5s linear infinite forwards running;
+                -moz-animation:aniImg 5s linear infinite forwards running;
+                -o-animation:aniImg 5s linear infinite forwards running;
+                -ms-animation:aniImg 5s linear infinite forwards running;
+                
             }
             button{
                 margin-top:30px;
@@ -225,8 +230,8 @@ class MusicPages extends React.Component{
                         {
                             selectedMusic && (
                                 <div>
-                                     <div>
-                                        <img src={selectedMusic.img}  className={this.props.isPlay?'activeImg':''} alt="歌曲图片"/>
+                                     <div className={this.props.isPlay?'activeImg':''}>
+                                        <img src={selectedMusic.img}   alt="歌曲图片"/>
                                      </div>
                                      <button><a target="__blank" href={selectedMusic.play_url}>下载音乐</a></button>
                                 </div>

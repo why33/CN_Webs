@@ -25,6 +25,8 @@ const Root=styled.div`
             height:180px;
             border:5px solid #fff;
             border-radius:5px 5px 0 0;
+            background:#d1a378;
+
         }
         &>p{
             color:#1890ff; 

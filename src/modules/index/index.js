@@ -107,7 +107,7 @@ const Root=styled.div`
         margin-top:134px;
         .musicPlay{
             position:fixed;
-            top:220px;
+            top:120px;
             left:20px;
             width:70px;
             height:70px;
@@ -115,7 +115,7 @@ const Root=styled.div`
             border-radius:50%;
             background:rgba(200,200,200,.15);
             cursor:pointer;
-            box-shadow:1px 3px 5px 0 rgba(187, 187, 187,.8);
+            box-shadow:1px 3px 5px 3px rgba(187, 187, 187,.8) inset;
             img{
                 width:100%;
                 height:100%;
@@ -237,7 +237,7 @@ class MainContent extends React.Component{
                         </Header>
                         <Content>
                             <div className='content-Style'>
-                                <div className={`musicPlay ${isPlay?'activeMusicbackgb':''}`} hidden={(window.location.pathname==="/music")?true:false} onClick={this.musicPlay.bind(this)}><ToolTip title={isPlay?'暂停':'播放'} direction="top"><img className={isPlay?'activeMusic':''} src={musicIcon} alt="音乐播放图标"/></ToolTip></div>
+                                <div className={`musicPlay ${isPlay?'activeMusicbackgb':''}`} hidden={(window.location.pathname==="/music")?true:false} onClick={this.musicPlay.bind(this)}><ToolTip title={isPlay?' 暂停音樂 ':' 播放音樂 '} direction="top"><img className={isPlay?'activeMusic':''} src={musicIcon} alt="音乐播放图标"/></ToolTip></div>
                                 <Route path={selectedPath.url} component={selectedPath.comp}/>
                             </div>
                         </Content>
