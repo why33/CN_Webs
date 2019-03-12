@@ -118,12 +118,13 @@ const Root=styled.div`
                 border:20px solid #4b4e51;
             }
             .activeImg{
-                animation:aniImg 5s linear infinite forwards running;
+                
+                
                 -webkit-animation:aniImg 5s linear infinite forwards running;
                 -moz-animation:aniImg 5s linear infinite forwards running;
                 -o-animation:aniImg 5s linear infinite forwards running;
-                -ms-animation:aniImg 5s linear infinite forwards running;
-                
+                -ms-animation:aniImg 5s linear infinite forwards;
+                animation:aniImg 5s linear infinite forwards running ;
             }
             button{
                 margin-top:30px;
@@ -230,8 +231,8 @@ class MusicPages extends React.Component{
                         {
                             selectedMusic && (
                                 <div>
-                                     <div className={this.props.isPlay?'activeImg':''}>
-                                        <img src={selectedMusic.img}   alt="歌曲图片"/>
+                                     <div >
+                                        <img src={selectedMusic.img} className={this.props.isPlay?'activeImg':''}  alt="歌曲图片"/>
                                      </div>
                                      <button><a target="__blank" href={selectedMusic.play_url}>下载音乐</a></button>
                                 </div>

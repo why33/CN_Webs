@@ -1,5 +1,5 @@
 import React from 'react'
-import styled,{keyframes} from 'styled-components'
+import styled from 'styled-components'
 import connect from '@connect'
 import './index.css'
 import { BrowserRouter as Router,Route,Link } from 'react-router-dom';
@@ -13,44 +13,8 @@ import MusicControl from '../music/MusicControl'
 
 const SubMenu = Menu.SubMenu;
 const { Header, Content, Footer } = Layout;
-const num=Math.random()*20+'px';
-const aniMuisc=keyframes`
-    0%{
-        transform:rotate(0deg);
-        -o-transform:rotate(0deg);
-        -webkit-transform:rotate(0deg);
-        -moz-transform:rotate(0deg);
-        -ms-transform:rotate(0deg);
-    }
-    100%{
-        transform:rotate(360deg);
-        -o-transform:rotate(360deg);
-        -webkit-transform:rotate(360deg);
-        -moz-transform:rotate(360deg);
-        -ms-transform:rotate(360deg);
-    }
-`
-const aniMuiscbg=keyframes`
-    0%{
-        border-width:1px;
-        transform:rotate(0deg);
-        -o-transform:rotate(0deg);
-        -webkit-transform:rotate(0deg);
-        -moz-transform:rotate(0deg);
-        -ms-transform:rotate(0deg);
-    }
-    50%{
-        border-width:${Math.random()*25+'px'};
-    }
-    100%{
-        border-width:${num};
-        transform:rotate(360deg);
-        -o-transform:rotate(360deg);
-        -webkit-transform:rotate(360deg);
-        -moz-transform:rotate(360deg);
-        -ms-transform:rotate(360deg);
-    }
-`
+
+
 const Root=styled.div`
     width:100%;
     height:100%;
@@ -113,7 +77,7 @@ const Root=styled.div`
             height:70px;
             padding:10px 15px 15px;
             border-radius:50%;
-            background:rgba(200,200,200,.15);
+            background:rgba(200,200,200,.4);
             cursor:pointer;
             box-shadow:1px 3px 5px 3px rgba(187, 187, 187,.8) inset;
             img{
@@ -131,18 +95,19 @@ const Root=styled.div`
             border-style:solid;
             border-color:#5f6265;
             border-radius:50%;
-            z-index:-1;
-            box-shadow:0px 3px 5px 0 rgba(187, 187, 187,.8);
-            -webkit-animation:${aniMuiscbg} 5s linear infinite alternate forwards running;
-            -moz-animation:${aniMuiscbg} 5s linear infinite alternate forwards running;
-            -o-animation:${aniMuiscbg} 5s linear infinite alternate forwards running;
-            animation:${aniMuiscbg} 5s linear infinite alternate forwards running;
+            box-shadow:0px 3px 5px 0 rgba(187, 187, 187,.9);
+            -webkit-animation:aniMuiscbg 5s linear infinite alternate forwards running;
+            -moz-animation:aniMuiscbg 5s linear infinite alternate forwards running;
+            -o-animation:aniMuiscbg 5s linear infinite alternate forwards running;
+            -ms-animation:aniMuiscbg 5s linear infinite forwards;
+            animation:aniMuiscbg 5s linear infinite alternate forwards running;
         }
         .activeMusic{
-           -webkit-animation:${aniMuisc} 5s linear infinite forwards running;
-           -moz-animation:${aniMuisc} 5s linear infinite forwards running;
-           -o-animation:${aniMuisc} 5s linear infinite forwards running;
-           animation:${aniMuisc} 5s linear infinite forwards running;
+           -webkit-animation:aniMuisc 5s linear infinite forwards running;
+           -moz-animation:aniMuisc 5s linear infinite forwards running;
+           -o-animation:aniMuisc 5s linear infinite forwards running;
+           -ms-animation:aniMuisc 5s linear infinite forwards;
+           animation:aniMuisc 5s linear infinite forwards running;
         }
     }
     
@@ -237,7 +202,11 @@ class MainContent extends React.Component{
                         </Header>
                         <Content>
                             <div className='content-Style'>
-                                <div className={`musicPlay ${isPlay?'activeMusicbackgb':''}`} hidden={(window.location.pathname==="/music")?true:false} onClick={this.musicPlay.bind(this)}><ToolTip title={isPlay?' 暂停音樂 ':' 播放音樂 '} direction="top"><img className={isPlay?'activeMusic':''} src={musicIcon} alt="音乐播放图标"/></ToolTip></div>
+                                <div className={`musicPlay ${isPlay?'activeMusicbackgb':''}`} hidden={(window.location.pathname==="/music")?true:false} onClick={this.musicPlay.bind(this)}>
+                                    <ToolTip title={isPlay?' 暂停音乐 ':' 播放音乐 '} direction="top">
+                                        <img className={isPlay?'activeMusic':''} src={musicIcon} alt='音乐图标'/>
+                                    </ToolTip>
+                                </div>
                                 <Route path={selectedPath.url} component={selectedPath.comp}/>
                             </div>
                         </Content>
