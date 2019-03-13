@@ -4,6 +4,7 @@ import IconType from '@icon'
 import styled from 'styled-components'
 import connect from "@connect"
 import "./ani.css"
+import { Scrollbars } from 'react-custom-scrollbars';
 
 
 // const  aniImg=keyframes`
@@ -170,7 +171,7 @@ const Root=styled.div`
     }
     .music-lyric-content-style{
         height:300px;
-        overflow-y:scroll;
+        overflow-y:hidden;
         margin-top:10px;
         ul{
             font-size:12px;
@@ -218,13 +219,16 @@ class MusicPages extends React.Component{
                   <div className="music-list-hearder">
                     <Icon type={IconType.iBars}/> 播放列表
                   </div>
-                  <ul>
-                     {
-                         musicAll.map((item,index)=>(
-                            <li key={item.album_id} className={selectedMusic && (item.album_id===selectedMusic.album_id?'selectedStyle':'')} title={item.song_name} onClick={this.clickfun.bind(this,item,index)}><nobr><span>{`${index+1}.`} </span>{item.song_name}</nobr></li>
-                        ))
-                     }
-                  </ul>
+                  <Scrollbars>
+                      <ul>
+                            {
+                                musicAll.map((item,index)=>(
+                                    <li key={item.album_id} className={selectedMusic && (item.album_id===selectedMusic.album_id?'selectedStyle':'')} title={item.song_name} onClick={this.clickfun.bind(this,item,index)}><nobr><span>{`${index+1}.`} </span>{item.song_name}</nobr></li>
+                                ))
+                            }
+                        </ul>
+                  </Scrollbars>
+                  
                 </div>
                 <div className="music-content-style">
                     <div className='music-detail-style'>
@@ -251,13 +255,16 @@ class MusicPages extends React.Component{
                         {
                             selectedMusicLyric && (
                                 <div className='music-lyric-content-style'>
-                                     <ul >
-                                        {
-                                            selectedMusicLyric.map(item=>(
-                                                <li key={item.time}><nobr>{item.text}</nobr></li>
-                                            ))
-                                        }
-                                    </ul>
+                                    <Scrollbars>
+                                        <ul >
+                                            {
+                                                selectedMusicLyric.map(item=>(
+                                                    <li key={item.time}><nobr>{item.text}</nobr></li>
+                                                ))
+                                            }
+                                        </ul>
+                                    </Scrollbars>
+                                     
                                 </div>
                                
                             )
