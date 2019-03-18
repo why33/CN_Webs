@@ -44,7 +44,7 @@ const Root=styled.div`
                 line-height:20px;
                 font-weight:bold;
                 text-shadow:0 0 1px #000;
-                margin:20px 0 8px;
+                margin:10px 0 8px;
             }
             &>div{
                 display:flex;

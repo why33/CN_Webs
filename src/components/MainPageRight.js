@@ -158,7 +158,7 @@ class MainPageRight extends React.Component{
                         </div>
                 </div>
                 {
-                    window.location.pathname!=="/" && (
+                    window.location.hash!=="#/" && (
                         <div className='hot-style'>
                             <div className='search-style'>
                                 <Input onChange={this.onChangeValue.bind(this)} onKeyDown={this.onKeyDown.bind(this)}/><Button onClick={this.onSearch.bind(this,this.state.value)}>搜索</Button>

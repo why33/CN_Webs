@@ -98,7 +98,7 @@ class WebContent extends React.Component{
     }
     //查看全文/查看代码
     detailShow=(item,index)=>{
-        let indexArr0=window.location.pathname.split('/');
+        let indexArr0=window.location.hash.slice(1).split('/');
         let index0=parseInt(indexArr0[indexArr0.length-1]);
         let lists0=contents[index0].children;
         let success=()=>{
@@ -116,7 +116,7 @@ class WebContent extends React.Component{
         this.props.changeCurrentFun(0,page,this.props.current);
     }
     render(){
-        let indexArr=window.location.pathname.split('/');
+        let indexArr=window.location.hash.slice(1).split('/');
         let index=parseInt(indexArr[indexArr.length-1]);
         let parName=contents[index].title;
         let lists=contents[index].children;

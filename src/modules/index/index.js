@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import connect from '@connect'
 import './index.css'
-import { BrowserRouter as Router,Route,Link } from 'react-router-dom';
+import { HashRouter as Router,Route,Link } from 'react-router-dom';
 import {Layout, Menu ,Icon,Message} from 'antd';
 import iconType from '@icon';
 import {contents} from '@type'
@@ -59,7 +59,7 @@ const Root=styled.div`
         left:0;
         bottom:0;
         width:100%;
-        height:100px;
+        height:80px;
         background:#b78d68;
        
     }
@@ -125,7 +125,7 @@ class MainContent extends React.Component{
     }
     componentWillMount(){
         this.props.paths.forEach(r=>{
-            let path=window.location.pathname;
+            let path=window.location.hash.slice(1);
             if(new RegExp(r.url).test(path)){
                 if(path.split('/').length===3){
                     this.props.selectModuleFun(r.key+'-'+path.split('/')[2]);
@@ -154,7 +154,16 @@ class MainContent extends React.Component{
             }
         }
         window.onpopstate=(e)=>{
-            window.location.reload();
+            this.props.paths.forEach(r=>{
+                let path=window.location.hash.slice(1);
+                if(new RegExp(r.url).test(path)){
+                    if(path.split('/').length===3){
+                        this.props.selectModuleFun(r.key+'-'+path.split('/')[2]);
+                    }else{
+                        this.props.selectModuleFun(r.key);
+                    }
+                }
+            })
         }
        
 
@@ -202,7 +211,7 @@ class MainContent extends React.Component{
                         </Header>
                         <Content>
                             <div className='content-Style'>
-                                <div className={`musicPlay ${isPlay?'activeMusicbackgb':''}`} hidden={(window.location.pathname==="/music")?true:false} onClick={this.musicPlay.bind(this)}>
+                                <div className={`musicPlay ${isPlay?'activeMusicbackgb':''}`} hidden={(window.location.hash==="#/music")?true:false} onClick={this.musicPlay.bind(this)}>
                                     <ToolTip title={isPlay?' 暂停音乐 ':' 播放音乐 '} direction="top">
                                         <img className={isPlay?'activeMusic':''} src={musicIcon} alt='音乐图标'/>
                                     </ToolTip>
@@ -210,7 +219,7 @@ class MainContent extends React.Component{
                                 <Route path={selectedPath.url} component={selectedPath.comp}/>
                             </div>
                         </Content>
-                        <div className="music-control-style" hidden={(window.location.pathname==="/music")?false:true}>
+                        <div className="music-control-style" hidden={(window.location.hash==="#/music")?false:true}>
                             <MusicControl {...this.props}  />   
                         </div>
                         <Footer>

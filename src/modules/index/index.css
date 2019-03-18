@@ -43,7 +43,7 @@
     content:"";
     width:100px;
     height:100px;
-    background:url('/imgs/userCode.jpg');
+    background:#D9E7F0 url('/imgs/userCode.jpg');
     background-size:cover;
     padding:10px;
     transform:translate(-102%,-25%);

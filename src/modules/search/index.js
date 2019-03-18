@@ -301,7 +301,7 @@ class SearchPage extends React.Component{
         super(props);
         this.state={
             key:0,
-            value:decodeURIComponent(window.location.search).split("=")[1] || '',
+            value:decodeURIComponent(window.location.hash).slice(1).split("=")[1] || '',
             searchResult:null,
             show:[0,false],//图片展示
         }
@@ -315,6 +315,7 @@ class SearchPage extends React.Component{
         let event=window.event || e;
         if(event.keyCode===13){
             this.searchValue(this.state.value);
+            return false;
         }
     }
     //切换tab
@@ -356,15 +357,17 @@ class SearchPage extends React.Component{
                 }
             }
             this.setState({
-                searchResult:(Object.keys(arrOBJ).length>0)?arrOBJ : null
+                searchResult:(Object.keys(arrOBJ).length>0)?arrOBJ : null,
+                value:(Object.keys(arrOBJ).length>0)?val : ''
             })
            
         }else{
             this.setState({
-                searchResult:null
+                searchResult:null,
+                value:""
             })
         }
-        this.props.history.push(`/search/?val=${this.state.value}`);
+        this.props.history.replace(`/search/?val=${this.state.value}`);
     }
     changeValue=(e)=>{
         this.setState({
@@ -432,8 +435,8 @@ class SearchPage extends React.Component{
                             status && (
                                 <div>
                                     <span className='cancel_but' onClick={this.cancelPic.bind(this)}> &#10008; </span>
-                                    <span className='prev_but' onClick={this.prevPic.bind(this)} hidden={index===0?true:false}> &#139; </span>
-                                    <span className='next_but' onClick={this.nextPic.bind(this)} hidden={index===(obj.length-1)?true:false}> &#155; </span>
+                                    <span className='prev_but' onClick={this.prevPic.bind(this)} hidden={index===0?true:false}> ◀ </span>
+                                    <span className='next_but' onClick={this.nextPic.bind(this)} hidden={index===(obj.length-1)?true:false}>  ▶ </span>
                                 </div>
 
                             )
