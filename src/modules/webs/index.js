@@ -96,6 +96,15 @@ class WebContent extends React.Component{
             current:this.props.current[0],
         }
     }
+    componentWillReceiveProps(nextProps){
+        if(nextProps.selectedPath!==this.props.selectedPath){
+            let indexArr=window.location.hash.slice(1).split('/');
+            let index=parseInt(indexArr[indexArr.length-1]);
+            let lists=contents[index].children;
+            this.props.ContentsListFun(lists||[]);
+
+        }
+    }
     //查看全文/查看代码
     detailShow=(item,index)=>{
         let indexArr0=window.location.hash.slice(1).split('/');
@@ -106,7 +115,7 @@ class WebContent extends React.Component{
              this.props.ContentsListFun(lists0||[]);
              this.props.history.push(`/detailShow?t=${item.title}`);
         }
-        this.props.contentSelectedFun(item,index,window.location.pathname,()=>success());
+        this.props.contentSelectedFun(item,index,window.location.hash,()=>success());
     }
     //分页器变换
     onChangePage=(page)=>{
@@ -117,7 +126,7 @@ class WebContent extends React.Component{
     }
     render(){
         let indexArr=window.location.hash.slice(1).split('/');
-        let index=parseInt(indexArr[indexArr.length-1]);
+        let index=parseInt(indexArr[indexArr.length-1])|| 0;
         let parName=contents[index].title;
         let lists=contents[index].children;
         const listsArr= (lists||[]).slice((this.state.current-1)*3,this.state.current*3);

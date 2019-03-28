@@ -126,6 +126,7 @@ class MainContent extends React.Component{
     componentWillMount(){
         this.props.paths.forEach(r=>{
             let path=window.location.hash.slice(1);
+            console.log(111122,path)
             if(new RegExp(r.url).test(path)){
                 if(path.split('/').length===3){
                     this.props.selectModuleFun(r.key+'-'+path.split('/')[2]);
@@ -156,8 +157,16 @@ class MainContent extends React.Component{
         window.onpopstate=(e)=>{
             this.props.paths.forEach(r=>{
                 let path=window.location.hash.slice(1);
-                if(new RegExp(r.url).test(path)){
+                let pathNew=path;
+                if(path.split('/').length===3){
+                    pathNew=path.slice(0,4)
+                }
+                if(new RegExp(r.url).test(pathNew)){
+                    if(r!==this.props.selectedPath){
+                        return;
+                    }
                     if(path.split('/').length===3){
+                       
                         this.props.selectModuleFun(r.key+'-'+path.split('/')[2]);
                     }else{
                         this.props.selectModuleFun(r.key);
@@ -165,8 +174,6 @@ class MainContent extends React.Component{
                 }
             })
         }
-       
-
     }
     //返回顶部
     retureTopFun=()=>{

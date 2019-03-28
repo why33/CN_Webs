@@ -119,7 +119,6 @@ class DetailShow extends React.Component{
         if(!this.props.contentSelected){
             this.props.selectModuleFun('0');
             this.props.history.push(`/`);
-           
         }
     }
     componentDidUpdate(){
@@ -130,17 +129,31 @@ class DetailShow extends React.Component{
     }
     //返回
     returnIndex=()=>{
-        let path=this.props.contentSelected.path;
+        let path=this.props.contentSelected.path.slice(1);
         this.props.paths.forEach(r=>{
-            if(new RegExp(r.url).test(path)){
-                if(path.split('/').length===3){
-                    this.props.selectModuleFun(r.key+'-'+path.split('/')[2]);
-                }else{
-                    this.props.selectModuleFun(r.key);
+            if(path.split('/').length===3){
+               let pathNew=path.slice(0,4);
+               if(new RegExp(r.url).test(pathNew)){
+                    if(this.props.history.location.pathname!==path){
+                        this.props.history.push(`${path}`);
+                    }else{
+                        this.props.history.replace(`${path}`);
+                    }
+                    this.props.selectModuleFun(r.key+"-"+path.split('/')[2]);
+            
+                 }
+            }else{
+                if(new RegExp(r.url).test(path)){
+                        if(this.props.history.location.pathname!==path){
+                            this.props.history.push(`${path}`);
+                        }else{
+                            this.props.history.replace(`${path}`);
+                        }
+                        this.props.selectModuleFun(r.key);
                 }
             }
+            
         })
-        this.props.history.push(this.props.contentSelected.path);
     }
     //上一篇
     preContent=(index)=>{

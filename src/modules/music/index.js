@@ -7,6 +7,23 @@ import "./ani.css"
 import { Scrollbars } from 'react-custom-scrollbars';
 
 
+// const  aniImg=keyframes`
+//     0%{
+//         -o-transform:rotate(0deg);
+//         -webkit-transform:rotate(0deg);
+//         -moz-transform:rotate(0deg);
+//         -ms-transform:rotate(0deg);
+//         transform:rotate(0deg);
+//     }
+//     100%{
+        
+//         -o-transform:rotate(360deg);
+//         -webkit-transform:rotate(360deg);
+//         -moz-transform:rotate(360deg);
+//         -ms-transform:rotate(360deg);
+//         transform:rotate(360deg);
+//     }
+// `
 
 const Root=styled.div`
     display:flex;
@@ -168,7 +185,6 @@ const Root=styled.div`
                 overflow: hidden;
             }
         }
-
        
     }
     .search-control-style{

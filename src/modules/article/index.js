@@ -77,7 +77,7 @@ class Articles extends React.Component{
     }
     //阅读全文
     showDetail=(item,index)=>{
-        this.props.contentSelectedFun(item,index,window.location.pathname,()=>this.success(item));
+        this.props.contentSelectedFun(item,index,window.location.hash,()=>this.success(item));
     }
     success=(item)=>{
         this.props.selectModuleFun('7');
